@@ -1,0 +1,93 @@
+\documentclass[
+    12pt,
+    letterpaper,
+    aps,
+    prd,
+    longbibliography,
+    nofootinbib,
+    raggedbottom,
+    amsmath,
+    amssymb,
+    amsfonts,
+]{revtex4-1}
+\usepackage[utf8x]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{enumerate}
+\usepackage{hyperref}
+\usepackage{lmodern}
+\usepackage{bm}
+
+\newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}
+\newcommand{\tx}[1]{\text{#1}}
+\newcommand{\pn}[1]{\left(#1\right)}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\norm}[1]{\left|\left|#1\right|\right|}
+\newcommand{\bk}[1]{\left[#1\right]}
+\newcommand{\abk}[1]{\left\langle#1\right\rangle}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\set}[1]{\left\{#1\right\}}
+\newcommand{\ellipsis}{\,\ldots}
+\newcommand{\given}{\,|\,}
+\newcommand{\where}{\mid}
+\newcommand{\bbm}[1]{\mathbb{#1}}
+\newcommand{\impl}{\rightarrow}
+\newcommand{\dubimpl}{\leftrightarrow}
+\newcommand{\calm}[1]{\mathcal{#1}}
+\newcommand{\obar}[1]{\overline{#1}}
+\newcommand{\lcm}{\text{lcm}}
+\newcommand{\image}{\text{image}}
+\newcommand{\iso}{\cong}
+\newcommand{\sub}{\subseteq}
+\newcommand{\comp}{\circ}
+\newcommand{\al}{\forall}
+\newcommand{\ex}{\exists}
+\newcommand{\integ}{\int}
+\newcommand{\gam}{\gamma}
+\newcommand{\del}{\delta}
+\newcommand{\Del}{\Delta}
+\newcommand{\lam}{\lambda}
+\newcommand{\Lam}{\Lambda}
+\newcommand{\eps}{\epsilon}
+\newcommand{\om}{\omega}
+\newcommand{\Om}{\Omega}
+
+\newcommand{\ensurebbm}[1]{\ensuremath{\mathbb{#1}}}
+\newcommand{\C}{\ensurebbm{C}}
+\newcommand{\Z}{\ensurebbm{Z}}
+\newcommand{\R}{\ensurebbm{R}}
+\newcommand{\N}{\ensurebbm{N}}
+\newcommand{\Q}{\ensurebbm{Q}}
+\newcommand{\F}{\ensurebbm{F}}
+
+\let\origfootnote\footnote
+\renewcommand{\footnote}[1]{%
+   \begingroup%
+   \renewcommand{\footnotesize}{\fontsize{10pt}{8pt}\selectfont}%
+   \origfootnote{#1}%
+   \endgroup%
+}
+
+\begin{document}
+
+\title{Inner Optimization}
+\author{Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, and Joar Skalse}
+\affiliation{with special thanks to Paul Christiano, Scott Garrabrant, and the MIRI agent foundations team for originating many of the ideas discussed in this paper.}
+\date{\today}
+
+\begin{abstract}
+ABSTRACT.
+\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+
+BODY.
+
+\cite{example}
+
+\bibliography{inner_optimization_sources}
+
+\end{document}
