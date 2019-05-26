@@ -3,13 +3,13 @@
     letterpaper,
     aps,
     prd,
-    longbibliography,
     nofootinbib,
+    nobibnotes,
+    longbibliography,
     raggedbottom,
     amsmath,
     amssymb,
     amsfonts,
-    nobibnotes,
 ]{revtex4-2}
 \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
@@ -159,7 +159,7 @@ However, humans tend not to place explicit value on evolution's objective, at le
 
 \subsection{The inner and outer alignment problems}
 \label{sec:1.2}
-\cftchapterprecistoc{Mesa-optimization is a type of robustness problem related to what Leike et al. term the ``reward-result gap.''\cite{leike}}
+\cftchapterprecistoc{We introduce a distinction between the two different, independent alignment problems that appear in the case of mesa-optimization.}
 
 In ``Scalable agent alignment via reward modelling,'' Leike et al. describe the concept of the ``reward-result gap'' as the difference between the (in their case learned) ``reward model'' (what we call the base objective) and the ``reward function that is recovered with perfect inverse reinforcement learning'' (what we call the behavioral objective).\cite{leike} That is, the reward-result gap is the fact that there can be a difference between what a learned algorithm is observed to be doing and what the programmers want it to be doing.
 
