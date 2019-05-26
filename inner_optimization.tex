@@ -6,7 +6,6 @@
     nofootinbib,
     nobibnotes,
     longbibliography,
-    raggedbottom,
     amsmath,
     amssymb,
     amsfonts,
@@ -161,7 +160,7 @@ However, humans tend not to place explicit value on evolution's objective, at le
 \label{sec:1.2}
 \cftchapterprecistoc{We introduce a distinction between the two different, independent alignment problems that appear in the case of mesa-optimization.}
 
-In ``Scalable agent alignment via reward modelling,'' Leike et al. describe the concept of the ``reward-result gap'' as the difference between the (in their case learned) ``reward model'' (what we call the base objective) and the ``reward function that is recovered with perfect inverse reinforcement learning'' (what we call the behavioral objective).\cite{leike} That is, the reward-result gap is the fact that there can be a difference between what a learned algorithm is observed to be doing and what the programmers want it to be doing.
+In ``Scalable agent alignment via reward modeling,'' Leike et al. describe the concept of the ``reward-result gap'' as the difference between the (in their case learned) ``reward model'' (what we call the base objective) and the ``reward function that is recovered with perfect inverse reinforcement learning'' (what we call the behavioral objective).\cite{leike} That is, the reward-result gap is the fact that there can be a difference between what a learned algorithm is observed to be doing and what the programmers want it to be doing.
 
 The problem posed by misaligned mesa-optimizers is a kind of reward-result gap. Specifically, it is the gap between the base objective and the mesa-objective (which then causes a gap between the base objective and the behavioral objective). We will call the problem of eliminating the base-mesa objective gap the \textit{inner alignment problem,} which we will contrast with the \textit{outer alignment problem} of eliminating the gap between the base objective and the intended goal of the programmers. This terminology is motivated by the fact that the inner alignment problem is an alignment problem entirely internal to the machine learning system, whereas the outer alignment problem is an alignment problem between the system and the humans outside of it (specifically between the base objective and the programmer's intentions). In the context of machine learning, outer alignment refers to aligning the specified loss function with the intended goal, whereas inner alignment refers to aligning the mesa-objective of a mesa-optimizer with the specified loss function.
 
@@ -173,7 +172,7 @@ It might not be necessary to solve the inner alignment problem in order to produ
 
 Given enough training, a mesa-optimizer should eventually be able to produce outputs that score highly on the base objective on the training distribution. Off the training distribution, however---and even on the training distribution while it is still early in the training process---the difference could be arbitrarily large. We will use the term \textit{robustly aligned} to refer to mesa-optimizers with mesa-objectives that robustly agree with the base objective across distributions and the term \textit{pseudo-aligned} to refer to mesa-optimizers with mesa-objectives that agree with the base objective on past training data, but not robustly across possible future data (either in testing, deployment, or further training). For a pseudo-aligned mesa-optimizer, there will be environments in which the base and mesa- objectives diverge. Pseudo-alignment, therefore, presents a potentially dangerous robustness problem since it opens up the possibility of a machine learning system which competently takes actions to achieve something other than the intended goal when off the training distribution. That is, its capabilities might generalize while its objective does not.
 
-For a toy example of what pseudo-alignment might look like, consider an RL agent trained on a maze navigation task where all the doors during training happen to be red. Let the base objective (reward function) be $O_\text{base} = \text{(1 if reached a door, 0 otherwise)}$. On the training distribution, this objective is equivalent to $O_\text{alt} = \text{(1 if reached something red, 0 otherwise)}$. Consider what would happen if an agent, trained to high performance on $O_\text{base}$ on this task, were put in an environment where the doors are instead blue, and with some red objects that are not doors. It might generalize on $O_\text{base}$, reliably navigating to the blue door in each maze (robust alignment). But it might also generalize on $O_\text{alt}$ instead of $O_\text{base}$, reliably navigating each maze to reach red objects (pseudo-alignment).\footnote{Of course, it might also fail to generalise at all.}
+For a toy example of what pseudo-alignment might look like, consider an RL agent trained on a maze navigation task where all the doors during training happen to be red. Let the base objective (reward function) be $O_\text{base} = \text{(1 if reached a door, 0 otherwise)}$. On the training distribution, this objective is equivalent to $O_\text{alt} = \text{(1 if reached something red, 0 otherwise)}$. Consider what would happen if an agent, trained to high performance on $O_\text{base}$ on this task, were put in an environment where the doors are instead blue, and with some red objects that are not doors. It might generalize on $O_\text{base}$, reliably navigating to the blue door in each maze (robust alignment). But it might also generalize on $O_\text{alt}$ instead of $O_\text{base}$, reliably navigating each maze to reach red objects (pseudo-alignment).\footnote{Of course, it might also fail to generalize at all.}
 
 \subsection{Mesa-optimization as a safety problem}
 \label{sec:1.4}
@@ -252,11 +251,11 @@ Second, we hypothesize that the details of a machine learning model's architectu
 
 We can then formulate a notion of \textit{reachability,} the difficulty for the base optimizer to find any given learned algorithm, which we can analyze in the case of a local optimization process. A local optimization process might fail to find a particular learned algorithm that would perform very well on the base objective if the learned algorithm is surrounded by other algorithms that perform poorly on the base objective. For a mesa-optimizer to be produced by a local optimization process, it needs to not only perform well on the base objective, but also be \textit{reachable;} that is, there needs to be a path through the space of learned algorithms to it which is approximately monotonically increasing. Furthermore, the degree to which the path only need be approximate---that is, the degree to which ML training procedures can escape local optima---is likely to be critical, as optimization algorithms are complex enough that it might require a significant portion of the algorithm to be present before performance gains start being realized.
 
-\textbf{Algorithmic range.} One key factor likely to determine the reachability of mesa-optimizers is the \textit{algorithmic range} of the learned algorithms---that is, how extensive is the set of algorithms (or how expressive is the model space) capable of being found by the base optimizer. The more extensive a model's algorithmic range, the broader the space of possible learned algorithms, and thus the more likely that it will be able to find one which is an mesa-optimizer, assuming the base optimizer is incentivized to do so. For example, architectures that explicitly give the algorithm access to a wide range of possible computations, such as recurrent neural networks or neural Turing machines,\cite{neural_tms} seem more likely to produce mesa-optimizers.
+\textbf{Algorithmic range.} One key factor likely to determine the reachability of mesa-optimizers is the \textit{algorithmic range} of the learned algorithms---that is, how extensive is the set of algorithms (or how expressive is the model space) capable of being found by the base optimizer. The more extensive a model's algorithmic range, the broader the space of possible learned algorithms, and thus the more likely that it will be able to find one which is a mesa-optimizer, assuming the base optimizer is incentivized to do so. For example, architectures that explicitly give the algorithm access to a wide range of possible computations, such as recurrent neural networks or neural Turing machines,\cite{neural_tms} seem more likely to produce mesa-optimizers.
 
 \textbf{Inductive biases.} Another important factor is the degree to which the base optimizer is explicitly or implicitly biased in various ways. The nature of these inductive biases will contribute to the likelihood of a mesa-optimizer being selected for. One of the most important kind of inductive bias is simplicity bias, which would almost certainly be exhibited by almost all base optimizers. We identify three ways in which simplicity bias can manifest itself:
 \begin{enumerate}
-\item An explicit penalty due to parameter regularisation or architectural constraints such as weight-sharing or sparse connections.
+\item An explicit penalty due to parameter regularization or architectural constraints such as weight-sharing or sparse connections.
 \item An implicit bias due to the model architecture. For example, it has been shown that neural networks are more likely to fit a simple function to a set of training data, even when no regularization is used.\cite{nn_simp_bias}
 \item The capacity limitations of the model. The size of a model imposes a hard limit on the complexity of the functions it is able to represent. Thus, to the degree that the base optimizer is selecting based on performance, it will be driven to ``squeeze out'' as much performance as it can for any given model capacity, leading to a bias in favor of relatively compressed policies.
 \end{enumerate}
@@ -553,7 +552,7 @@ The higher-level services in this tree can be seen as meta-optimizers of the low
 \section{Conclusion}
 \cftchapterprecistoc{More research is needed to understand the nature of mesa-optimization in order to properly address mesa-optimization-related safety concerns in advanced ML systems.}
 
-In this paper, we have argued for the existence of two basic AI safety problems: the problem that mesa-optimizers may arise even when not desired (\textit{unintended mesa-optimization}), and the problem that mesa-optimizers may not be aligned with the original system's objective (\textit{the inner alignment problem}). However, our work is still only speculative. We are thus left with several possibilities:
+In this paper, we have argued for the existence of two basic AI safety problems: the problem that mesa-optimizers may arise even when not desired (unintended mesa-optimization), and the problem that mesa-optimizers may not be aligned with the original system's objective (the inner alignment problem). However, our work is still only speculative. We are thus left with several possibilities:
 \begin{enumerate}
 \item If mesa-optimizers are very unlikely to occur in advanced ML systems (and we do not develop them on purpose), then mesa-optimization and inner alignment are not concerns.
 \item If mesa-optimizers are not only likely to occur but also difficult to prevent, then solving both inner alignment and outer alignment becomes critical for achieving confidence in highly capable AI systems.
@@ -565,7 +564,7 @@ Our uncertainty on this matter is a potentially significant hurdle to determinin
 \newpage
 \section{Glossary}
 
-\subsection{\Cref{sec:1} Glossary}
+\subsection{Section 1 Glossary}
 \begin{itemize}
 \item \textbf{Base optimizer:} A \textit{base optimizer} is an optimizer that searches through algorithms according to some objective.
   \begin{itemize}
@@ -586,14 +585,14 @@ Our uncertainty on this matter is a potentially significant hurdle to determinin
 \item \textbf{Robust alignment:} A mesa-optimizer is \textit{robustly aligned} with the base objective if it robustly optimizers for the base objective across distributions.
 \end{itemize}
 
-\subsection{\Cref{sec:2} Glossary}
+\subsection{Section 2 Glossary}
 \begin{itemize}
 \item \textbf{Algorithmic range:} The \textit{algorithmic range} of a machine learning system refers to how extensive the set of algorithms capable of being found be the base optimizer is.
 \item \textbf{Local optimization process:} A \textit{local optimization process} is an optimizer that uses local hill-climbing as its means of search.
 \item \textbf{Reachability:} The \textit{reachability} of a learned algorithm refers to the difficulty for the base optimizer to find that learned algorithm.
 \end{itemize}
 
-\subsection{\Cref{sec:3} Glossary}
+\subsection{Section 3 Glossary}
 \begin{itemize}
 \item \textbf{Approximate alignment:} An \textit{approximately aligned} mesa-optimizer is a pseudo-aligned mesa-optimizer where the base and mesa- objectives are approximately the same up to some degree of approximation error due to the difficulty of representing the base objective in the mesa-optimizer.
 \item \textbf{Proxy alignment:} A \textit{proxy aligned} mesa-optimizer is a pseudo-aligned mesa-optimizer that has learned to optimize for some proxy of the base objective instead of the base objective itself.
@@ -604,9 +603,9 @@ Our uncertainty on this matter is a potentially significant hurdle to determinin
 \item \textbf{Suboptimality alignment:} A \textit{suboptimality aligned} mesa-optimizer is a pseudo-aligned mesa-optimizer in which some deficiency, error, or limitation causes it to exhibit aligned behavior.
 \end{itemize}
 
-\subsection{\Cref{sec:4} Glossary}
+\subsection{Section 4 Glossary}
 \begin{itemize}
-\item \textbf{Corrigible alignment:} A \textit{corrigibly aligned} mesa-optimizer is a robustly aligned mesa-optimizer that has an mesa-objective that ``points to'' its epistemic model of the base objective.
+\item \textbf{Corrigible alignment:} A \textit{corrigibly aligned} mesa-optimizer is a robustly aligned mesa-optimizer that has a mesa-objective that ``points to'' its epistemic model of the base objective.
 \item \textbf{Deceptive alignment:} A \textit{deceptively aligned} mesa-optimizer is a pseudo-aligned mesa-optimizer that has enough information about the base objective to seem more fit from the perspective of the base optimizer than it actually is.
 \item \textbf{Internal alignment:} An \textit{internally aligned} mesa-optimizer is a robustly aligned mesa-optimizer that has internalized the base objective in its mesa-objective.
 \end{itemize}
