@@ -97,7 +97,7 @@
 \maketitle
 
 \begin{abstract}
-We analyze the type of learned optimization that occurs when a learned model (such as a neural network) is itself an optimizer---a situation we refer to as mesa-optimization. We believe that the possibility of mesa-optimization raises two important questions for the safety and transparency of advanced machine learning systems. First, under what circumstances will learned models be optimizers---possibly even when you do not want them to be? Second, when a learned model is an optimizer, what will its objective be---how will it differ from the loss function it was trained under---and how can it be aligned? In this paper, we provide an in-depth analysis of these two primary questions and provide an overview of topics for future research.
+We analyze the type of learned optimization that occurs when a learned model (such as a neural network) is itself an optimizer---a situation we refer to as mesa-optimization. We believe that the possibility of mesa-optimization raises two important questions for the safety and transparency of advanced machine learning systems. First, under what circumstances will learned models be optimizers---possibly even when you do not want them to be. Second, when a learned model is an optimizer, what will its objective be---how will it differ from the loss function it was trained under---and how can it be aligned. In this paper, we provide an in-depth analysis of these two primary questions and provide an overview of topics for future research.
 \end{abstract}
 
 \tableofcontents
@@ -123,7 +123,7 @@ Once we have introduced our framework in \cref{sec:1}, we will address the first
 \label{sec:1.1}
 \cftchapterprecistoc{What is a mesa-optimizer, and how does it relate to the base optimizer?}
 
-Conventionally, the optimizer in a machine learning setup is a base optimizer---usually some sort of gradient descent process---with the goal of creating a model designed to accomplish some specific task.
+Conventionally, the base optimizer in a machine learning setup is some sort of gradient descent process with the goal of creating a model designed to accomplish some specific task.
 
 Sometimes, this process will also involve some degree of meta-optimization wherein a \textit{meta-optimizer} is tasked with producing a base optimizer that is itself good at optimizing systems to achieve particular goals. Specifically, we will think of a \textit{meta-optimizer} as any system whose task is optimization. For example, we might design a meta-learning system to help tune our gradient descent process.\cite{grad_by_grad} Though the model found by meta-optimization can be thought of as a kind of learned optimizer, it is not the form of learned optimization that we are interested in for this paper. Rather, we are concerned with a different form of learned optimization which we call \textit{mesa-optimization.}
 
