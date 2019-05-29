@@ -1,0 +1,322 @@
+%% miritools.sty created by Jimmy (jimmy@intelligence.org) with custom commands by Nate Soares
+% 
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{miritools}[2016/02/22 v0.01]
+
+\newif\if@packages
+\DeclareOption{packages}{\@packagestrue}
+\DeclareOption{nopackages}{\@packagesfalse}
+
+\newif\if@miriarticle
+\DeclareOption{miriarticle}{\@miriarticletrue\@packagesfalse}
+\DeclareOption{nomiriarcticle}{\@miriarticlefalse}
+
+\newif\if@citefix
+\DeclareOption{nocitefix}{\@citefixfalse}
+\DeclareOption{citefix}{\@citefixtrue\@natbibfalse}
+
+\newif\if@natbib
+\DeclareOption{natbib}{\@natbibtrue}
+\DeclareOption{nonatbib}{\@natbibfalse}
+
+\newif\if@mathhelp
+\DeclareOption{mathhelp}{\@mathhelptrue}
+\DeclareOption{nomathhelp}{\@mathhelpfalse}
+
+\newif\if@functions
+\DeclareOption{functions}{\@functionstrue}
+\DeclareOption{nofunctions}{\@functionsfalse}
+
+\newif\if@objects
+\DeclareOption{objects}{\@objectstrue}
+\DeclareOption{noobjects}{\@objectsfalse}
+
+\newif\if@environments
+\DeclareOption{environments}{\@environmentstrue}
+\DeclareOption{noenvironments}{\@environmentsfalse}
+
+\newif\if@refs
+\DeclareOption{refs}{\@refstrue}
+\DeclareOption{norefs}{\@refsfalse}
+
+\newif\if@alghelp
+\DeclareOption{alghelp}{\@alghelptrue}
+\DeclareOption{noalghelp}{\@alghelpfalse}
+
+\newif\if@todo
+\@todofalse
+\DeclareOption{todo}{\@todotrue}
+
+\newif\if@notodo
+\@notodofalse
+\DeclareOption{notodo}{\@notodotrue\@todofalse}
+
+\DeclareOption*{\PackageWarning{miritools}{Unknown package option `\CurrentOption'}}
+
+\ExecuteOptions{packages,natbib,mathhelp,functions,objects,environments,refs,alghelp,todo} %All options but citefix and miriarticle are loaded by default
+
+\ProcessOptions\relax
+
+
+%Load all the standard packages
+\if@packages
+  \RequirePackage{amsmath,amssymb,amsopn,amsfonts,amsthm}
+  \RequirePackage{mdwlist}
+  \RequirePackage{tikz}
+  \usetikzlibrary{shapes,arrows}
+  \usetikzlibrary{positioning,intersections}
+  \RequirePackage{caption,subcaption}
+  \RequirePackage[ruled,vlined,noend]{algorithm2e}
+  \RequirePackage{microtype}
+  \RequirePackage{mathtools}
+  \RequirePackage{xfrac}
+  \RequirePackage{etoolbox}
+\fi
+
+
+%%% Loads packages without amsthm.sty which conflicts with miriarticle.sty
+\if@miriarticle
+  \RequirePackage{amsmath,amssymb,amsopn,amsfonts}
+  \RequirePackage{mdwlist}
+  \RequirePackage{tikz}
+  \usetikzlibrary{shapes,arrows}
+  \usetikzlibrary{positioning,intersections}
+  \RequirePackage{caption,subcaption}
+  \RequirePackage[ruled,vlined,noend]{algorithm2e}
+  \RequirePackage{microtype}
+  \RequirePackage{mathtools}
+  \RequirePackage{xfrac}
+  \RequirePackage{etoolbox}
+\fi
+
+%%% Natbib facsimile commands (useful for e.g., AAAI papers):
+\if@citefix
+  \@ifundefined{citet}{%
+  \def\citet{\@ifnextchar[{\@witht}{\@withoutt}}%
+  \def\@witht[#1]#2{\citeauthor{#2}~\shortcite[#1]{#2}}%
+  \def\@withoutt#1{\citeauthor{#1}~\shortcite{#1}}%
+  }{}
+
+  \@ifundefined{citep}{%
+  \def\citep{\@ifnextchar[{\@withp}{\@withoutp}}%
+  \def\@withp[#1]#2{\cite[#1]{#2}}%
+  \def\@withoutp#1{\cite{#1}}%
+  }{}
+  \newcommand{\citeyearpar}[1]{\shortcite{#1}}
+  \newcommand{\mkbibparens}[1]{(#1)}
+  \newcommand{\mkbibquote}[1]{``#1''}
+  \newcommand{\ch}{chap.\xspace}
+  \newcommand{\pp}{page\xspace}
+\fi
+
+
+%% Citation helpers:
+\if@natbib
+  \newcommand{\ch}{\bibstring{chapter}\xspace}
+  \newcommand{\pp}{\bibstring{page}\xspace}
+  \newcommand{\shortcite}[1]{\citeyearpar{#1}} %Makes shortcite command from AAAI style cross-compatible with miri templates
+  \newcommand{\mbp}{\mkbibparens}
+\fi
+
+%% Math helpers:
+\if@mathhelp
+\newcommand{\Set}[1]{\ensuremath{\{\,#1\,\}}}
+\newcommand{\Any}{\ensuremath{\,\cdot\,}}
+\newcommand{\Quote}[1]{\ensuremath{\ulcorner#1\urcorner}}
+\fi
+
+
+%%% Functions:
+% NOTE: For these two, use \underset{...}.
+% \DeclareMathOperator* is bad at placing the subscript correctly.
+\if@functions
+  \newcommand{\argmax}{\operatorname{arg\,max}}
+  \newcommand{\argmin}{\operatorname{arg\,min}}
+\fi
+
+
+%%% Objects:
+\if@objects
+  \newcommand{\PA}{\ensuremath{\mathsf{PA}}\xspace}
+  \newcommand{\ZF}{\ensuremath{\mathsf{ZF}}\xspace}
+  \newcommand{\ZFC}{\ensuremath{\mathsf{ZFC}}\xspace}
+
+  \newcommand{\AAA}{\ensuremath{\mathbb{A}}\xspace}
+  \newcommand{\BB}{\ensuremath{\mathbb{B}}\xspace}
+  \newcommand{\CC}{\ensuremath{\mathbb{C}}\xspace}
+  \newcommand{\DD}{\ensuremath{\mathbb{D}}\xspace}
+  \newcommand{\EE}{\ensuremath{\mathbb{E}}\xspace}
+  \newcommand{\FF}{\ensuremath{\mathbb{F}}\xspace}
+  \newcommand{\GG}{\ensuremath{\mathbb{G}}\xspace}
+  \newcommand{\HH}{\ensuremath{\mathbb{H}}\xspace}
+  \newcommand{\II}{\ensuremath{\mathbb{I}}\xspace}
+  \newcommand{\JJ}{\ensuremath{\mathbb{J}}\xspace}
+  \newcommand{\KK}{\ensuremath{\mathbb{K}}\xspace}
+  \newcommand{\LL}{\ensuremath{\mathbb{L}}\xspace}
+  \newcommand{\MM}{\ensuremath{\mathbb{M}}\xspace}
+  \newcommand{\NN}{\ensuremath{\mathbb{N}}\xspace}
+  \newcommand{\OO}{\ensuremath{\mathbb{O}}\xspace}
+  \newcommand{\PP}{\ensuremath{\mathbb{P}}\xspace}
+  \newcommand{\QQ}{\ensuremath{\mathbb{Q}}\xspace}
+  \newcommand{\RR}{\ensuremath{\mathbb{R}}\xspace}
+  \newcommand{\SSS}{\ensuremath{\mathbb{S}}\xspace}
+  \newcommand{\TT}{\ensuremath{\mathbb{T}}\xspace}
+  \newcommand{\UU}{\ensuremath{\mathbb{U}}\xspace}
+  \newcommand{\VV}{\ensuremath{\mathbb{V}}\xspace}
+  \newcommand{\WW}{\ensuremath{\mathbb{W}}\xspace}
+  \newcommand{\XX}{\ensuremath{\mathbb{X}}\xspace}
+  \newcommand{\YY}{\ensuremath{\mathbb{Y}}\xspace}
+  \newcommand{\ZZ}{\ensuremath{\mathbb{Z}}\xspace}
+
+  \newcommand{\Aa}{\ensuremath{\mathcal{A}}\xspace}
+  \newcommand{\Bb}{\ensuremath{\mathcal{B}}\xspace}
+  \newcommand{\Cc}{\ensuremath{\mathcal{C}}\xspace}
+  \newcommand{\Dd}{\ensuremath{\mathcal{D}}\xspace}
+  \newcommand{\Ee}{\ensuremath{\mathcal{E}}\xspace}
+  \newcommand{\Ff}{\ensuremath{\mathcal{F}}\xspace}
+  \newcommand{\Gg}{\ensuremath{\mathcal{G}}\xspace}
+  \newcommand{\Hh}{\ensuremath{\mathcal{H}}\xspace}
+  \newcommand{\Ii}{\ensuremath{\mathcal{I}}\xspace}
+  \newcommand{\Jj}{\ensuremath{\mathcal{J}}\xspace}
+  \newcommand{\Kk}{\ensuremath{\mathcal{K}}\xspace}
+  \newcommand{\Ll}{\ensuremath{\mathcal{L}}\xspace}
+  \newcommand{\Mm}{\ensuremath{\mathcal{M}}\xspace}
+  \newcommand{\Nn}{\ensuremath{\mathcal{N}}\xspace}
+  \newcommand{\Oo}{\ensuremath{\mathcal{O}}\xspace}
+  \newcommand{\Pp}{\ensuremath{\mathcal{P}}\xspace}
+  \newcommand{\Qq}{\ensuremath{\mathcal{Q}}\xspace}
+  \newcommand{\Rr}{\ensuremath{\mathcal{R}}\xspace}
+  \newcommand{\Ss}{\ensuremath{\mathcal{S}}\xspace}
+  \newcommand{\Tt}{\ensuremath{\mathcal{R}}\xspace}
+  \newcommand{\Uu}{\ensuremath{\mathcal{T}}\xspace}
+  \newcommand{\Vv}{\ensuremath{\mathcal{V}}\xspace}
+  \newcommand{\Ww}{\ensuremath{\mathcal{W}}\xspace}
+  \newcommand{\Xx}{\ensuremath{\mathcal{X}}\xspace}
+  \newcommand{\Yy}{\ensuremath{\mathcal{Y}}\xspace}
+  \newcommand{\Zz}{\ensuremath{\mathcal{Z}}\xspace} 
+\fi
+
+
+%%% Environments:
+\if@environments
+  \newtheorem{theorem}{Theorem}
+  \newtheorem{lemma}{Lemma}
+  \newtheorem{definition}{Definition}
+  \newtheorem{problem}{Problem}
+\fi
+
+
+%%% References:
+\if@refs
+  \newcommand{\Alg}[1]{Algorithm~\ref{alg:#1}}
+  \newcommand{\Def}[1]{Definition~\ref{def:#1}}
+  \newcommand{\Fig}[1]{Figure~\ref{fig:#1}}
+  \newcommand{\Lem}[1]{Lemma~\ref{lem:#1}}
+  \newcommand{\Prob}[1]{Problem~\ref{prob:#1}}
+  \newcommand{\Sec}[1]{Section~\ref{sec:#1}}
+  \newcommand{\Tab}[1]{Table~\ref{tab:#1}}
+  \newcommand{\Thm}[1]{Theorem~\ref{thm:#1}}
+  \newcommand{\App}[1]{Appendix~\ref{app:#1}}
+% NOTE: Equation is the only non-capitalized shortcut provided.
+% Also, \eq{x} outputs the equation number alone.
+  \newcommand{\Eqn}[1]{equation~\eqref{eq:#1}}
+  \newcommand{\eq}[1]{\eqref{eq:#1}}
+\fi
+
+%% Algorithm helpers:
+\if@alghelp
+  \DontPrintSemicolon
+  \SetKwProg{Fn}{def}{\-:}{end}
+  \SetKwIF{If}{ElseIf}{Else}{if}{\!:}{elif}{else:}{end}
+  \SetKwFor{For}{for}{\!:}{end}
+  \SetKwFor{Loop}{loop}{\!:}{end}
+  \SetKwFunction{Output}{output}
+\fi
+
+%%% Todo Notes:
+\if@todo
+  \RequirePackage[colorinlistoftodos,textsize=small]{todonotes}
+\fi
+
+\if@notodo
+  \RequirePackage[disable,colorinlistoftodos,textsize=small]{todonotes}
+\fi
+
+
+
+\endinput
+
+%%
+%% End of file `miritools.sty'.
+
+%%%Old contents of preamble
+%%You can copy and paste any parts necessary for styles that can't properly use the miritools package.
+
+% Standard packages
+%\usepackage{amsmath,amssymb,amsthm,amsopn,amsfonts}
+%\usepackage{mdwlist}
+%\usepackage{tikz}
+%\usetikzlibrary{shapes,arrows}
+%\usetikzlibrary{positioning,intersections}
+%\usepackage{caption,subcaption}
+%\usepackage[colorinlistoftodos,textsize=small]{todonotes}
+%\usepackage[ruled,vlined,noend]{algorithm2e}
+%\usepackage{microtype}
+%\usepackage{mathtools}
+%\usepackage{xfrac}
+%\usepackage{etoolbox}
+
+% Section and TOC numbering
+%\setcounter{secnumdepth}{2}
+%\setcounter{tocdepth}{2}
+
+% Custom commands:
+%% Citation helpers:
+%\newcommand{\ch}{\bibstring{chapter}\xspace}
+%\newcommand{\pp}{\bibstring{page}\xspace}
+%\newcommand{\shortcite}[1]{\citeyearpar{#1}}
+%% Math helpers:
+%%% Syntax:
+%\newcommand{\Set}[1]{\ensuremath{\{\,#1\,\}}}
+%\newcommand{\Any}{\ensuremath{\,\cdot\,}}
+%\newcommand{\Quote}[1]{\ensuremath{\ulcorner#1\urcorner}}
+%%% Functions:
+% NOTE: For these two, use \underset{...}.
+% \DeclareMathOperator* is bad at placing the subscript correctly.
+%\newcommand{\argmax}{\operatorname{arg\,max}}
+%\newcommand{\argmin}{\operatorname{arg\,min}}
+%%% Objects:
+%\newcommand{\PA}{\ensuremath{\mathsf{PA}}\xspace}
+%\newcommand{\ZF}{\ensuremath{\mathsf{ZF}}\xspace}
+%\newcommand{\NN}{\ensuremath{\mathbb{N}}\xspace}
+%\newcommand{\RR}{\ensuremath{\mathbb{R}}\xspace}
+%\newcommand{\ZZ}{\ensuremath{\mathbb{Z}}\xspace}
+%\newcommand{\QQ}{\ensuremath{\mathbb{Q}}\xspace}
+%\newcommand{\PP}{\ensuremath{\mathbb{P}}\xspace}
+%\newcommand{\EE}{\ensuremath{\mathbb{E}}\xspace}
+%%% Environments:
+%\newtheorem{theorem}{Theorem}
+%\newtheorem{lemma}{Lemma}
+%\newtheorem{definition}{Definition}
+%\newtheorem{problem}{Problem}
+%%% References:
+%\newcommand{\Alg}[1]{Algorithm~\ref{alg:#1}}
+%\newcommand{\Def}[1]{Definition~\ref{def:#1}}
+%\newcommand{\Fig}[1]{Figure~\ref{fig:#1}}
+%\newcommand{\Lem}[1]{Lemma~\ref{lem:#1}}
+%\newcommand{\Prob}[1]{Problem~\ref{prob:#1}}
+%\newcommand{\Sec}[1]{Section~\ref{sec:#1}}
+%\newcommand{\Tab}[1]{Table~\ref{tab:#1}}
+%\newcommand{\Thm}[1]{Theorem~\ref{thm:#1}}
+%\newcommand{\App}[1]{Appendix~\ref{app:#1}}
+% NOTE: Equation is the only non-capitalized shortcut provided.
+% Also, \eq{x} outputs the equation number alone.
+%\newcommand{\Eqn}[1]{equation~\eqref{eq:#1}}
+%\newcommand{\eq}[1]{\eqref{eq:#1}}
+%% Algorithm helpers:
+%\DontPrintSemicolon
+%\SetKwProg{Fn}{def}{\-:}{end}
+%\SetKwIF{If}{ElseIf}{Else}{if}{\!:}{elif}{else:}{end}
+%\SetKwFor{For}{for}{\!:}{end}
+%\SetKwFor{Loop}{loop}{\!:}{end}
+%\SetKwFunction{Output}{output}

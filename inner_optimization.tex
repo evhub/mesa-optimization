@@ -1,29 +1,30 @@
 \documentclass[
-    12pt,
-    letterpaper,
-    aps,
-    prd,
-    nofootinbib,
-    nobibnotes,
-    longbibliography,
-    amsmath,
-    amssymb,
-    amsfonts,
-]{revtex4-2}
-\usepackage[utf8x]{inputenc}
+  onecolumn,
+  natbib,
+]{miri-tech-article}
+\usepackage[
+  notodo,
+  nocitefix,
+]{miritools}
+% \usepackage[utf8x]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{graphicx}
-\usepackage{enumerate}
-\usepackage{hyperref}
-\usepackage{cleveref}
 \usepackage{lmodern}
+% \usepackage{amsmath}
+% \usepackage{amssymb}
+% \usepackage{amsfonts}
 \usepackage{bm}
+% \usepackage{graphicx}
+\usepackage{enumerate}
+% \usepackage{hyperref}
+\usepackage[noabbrev]{cleveref}
+\usepackage[font=small,labelfont=bf]{caption}
+\usepackage[hang,flushmargin]{footmisc}
+\usepackage{setspace}
 
-% hacky stuff necessary to get tocloft working with revtex
-\let\starttoc\undefined
-\newcommand{\cftchapindent}{0em}
-\newcommand{\cftchapnumwidth}{0em}
-\usepackage[titles]{tocloft}
+% \let\starttoc\undefined
+\newcommand{\cftchapindent}{10mm}
+\newcommand{\cftchapnumwidth}{5mm}
+\usepackage{tocloft}
 
 \newcommand{\m}[1]{\begin{pmatrix}#1\end{pmatrix}}
 \newcommand{\tx}[1]{\text{#1}}
@@ -43,8 +44,8 @@
 \newcommand{\dubimpl}{\leftrightarrow}
 \newcommand{\calm}[1]{\mathcal{#1}}
 \newcommand{\obar}[1]{\overline{#1}}
-\newcommand{\lcm}{\text{lcm}}
-\newcommand{\image}{\text{image}}
+\newcommand{\lcm}{\operatorname{lcm}}
+\newcommand{\image}{\operatorname{image}}
 \newcommand{\iso}{\cong}
 \newcommand{\sub}{\subseteq}
 \newcommand{\comp}{\circ}
@@ -59,29 +60,29 @@
 \newcommand{\eps}{\epsilon}
 \newcommand{\om}{\omega}
 \newcommand{\Om}{\Omega}
-\newcommand{\argmax}{\text{\argmax}}
-\newcommand{\argmin}{\text{\argmin}}
+% \newcommand{\argmax}{\operatorname{\argmax}}
+% \newcommand{\argmin}{\operatorname{\argmin}}
 
-\newcommand{\ensurebbm}[1]{\ensuremath{\mathbb{#1}}}
-\newcommand{\C}{\ensurebbm{C}}
-\newcommand{\Z}{\ensurebbm{Z}}
-\newcommand{\R}{\ensurebbm{R}}
-\newcommand{\N}{\ensurebbm{N}}
-\newcommand{\Q}{\ensurebbm{Q}}
-\newcommand{\F}{\ensurebbm{F}}
+% \newcommand{\ensurebbm}[1]{\ensuremath{\mathbb{#1}}}
+% \newcommand{\C}{\ensurebbm{C}}
+% \newcommand{\Z}{\ensurebbm{Z}}
+% \newcommand{\R}{\ensurebbm{R}}
+% \newcommand{\N}{\ensurebbm{N}}
+% \newcommand{\Q}{\ensurebbm{Q}}
+% \newcommand{\F}{\ensurebbm{F}}
 
-\let\origfootnote\footnote
-\renewcommand{\footnote}[1]{%
-   \begingroup%
-   \renewcommand{\footnotesize}{\fontsize{10pt}{8pt}\selectfont}%
-   \origfootnote{#1}%
-   \endgroup%
-}
+\setcounter{secnumdepth}{2}
 
-\renewcommand{\thesection}{\arabic{section}}
-\renewcommand{\thesubsection}{\thesection.\arabic{subsection}}
+\setcitestyle{numbers,square}
+\bibliographystyle{unsrtnat}
+
+\onehalfspacing
 
 \begin{document}
+
+\title{Risks from learned optimization \\ in advanced machine learning systems}
+\author{Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott Garrabrant \\ with special thanks to Paul Christiano, Eric Drexler, Jan Leike, Rohin Shah, the MIRI agent foundations team, \\ and everyone else who provided feedback on earlier versions of this paper.}
+\date{\today}
 
 % replacements to remember to make:
 % — -> ---
@@ -92,20 +93,11 @@
 % Section X -> \cref{sec:X}
 % Figure X -> \cref{fig:X}
 
-\title{Risks from learned optimization \\ in advanced machine learning systems}
-\author{Evan Hubinger}
-\author{Chris van Merwijk}
-\author{Vladimir Mikulik}
-\author{Joar Skalse}
-\author{Scott Garrabrant}
-\collaboration{with special thanks to Paul Christiano, Eric Drexler, Jan Leike, Rohin Shah, the MIRI agent foundations team, and everyone else who provided feedback on earlier versions of this paper.}
-\date{\today}
+\maketitle
 
 \begin{abstract}
 We analyze the type of learned optimization that occurs when a learned model (such as a neural network) is itself an optimizer---a situation we refer to as mesa-optimization. We believe that the possibility of mesa-optimization raises two important questions for the safety and transparency of advanced machine learning systems. First, under what circumstances will learned models be optimizers? Second, when a learned model is an optimizer, what will its objective be, and how can it be aligned? In this paper, we provide an in-depth analysis of these two primary questions and provide an overview of topics for future research.
 \end{abstract}
-
-\maketitle
 
 \newpage
 \tableofcontents
@@ -223,7 +215,7 @@ Suppose an environment is composed of $N$ different instances, each of which req
 
 Thus, if we assume that, for a given $P$, the base optimizer will select the value of $x$ that maximizes the minimum level of performance, and thus the total optimization power applied to each instance, we get\footnote{Subject to the constraint that $x - f(y) \ge 0$.}
 \[
-  x = \text{argmax}_x~ \frac{P - f(x)}{N} + x.
+  x = \argmax_x~ \frac{P - f(x)}{N} + x.
 \]
 As one moves to more and more diverse environments---that is, as $N$ increases---this model suggests that $x$ will dominate $\frac{P - f(x)}{N}$, implying that mesa-optimization will become more and more favorable. Of course, this is simply a toy model, as it makes many questionable simplifying assumptions. Nevertheless, it sketches an argument for a pull towards mesa-optimization in sufficiently diverse environments.
 
@@ -282,8 +274,8 @@ In this section, we outline reasons to think that a mesa-optimizer may not optim
 
 Current machine learning methods select learned algorithms by empirically evaluating their performance on a set of training data according to the base objective function. Thus, ML base optimizers select mesa-optimizers according to the output they produce rather than directly selecting for a particular mesa-objective. Moreover, the selected mesa-optimizer's policy only has to perform well (as scored by the base objective) on the training data. If we adopt the assumption that the mesa-optimizer computes an optimal policy given its objective function, then we can summarize the relationship between the base and mesa- objectives as follows:\cite{chris}
 \begin{align*}
-  \theta^* &= \text{argmax}_\theta~ \mathbb E(O_{\text{base}}(\pi_\theta)),~ \text{where} \\
-  \pi_\theta &= \text{argmax}_\pi~ \mathbb E(O_{\text{mesa}}(\pi \,|\, \theta))
+  \theta^* &= \argmax_\theta~ \mathbb E(O_{\text{base}}(\pi_\theta)),~ \text{where} \\
+  \pi_\theta &= \argmax_\pi~ \mathbb E(O_{\text{mesa}}(\pi \,|\, \theta))
 \end{align*}
 That is, the base optimizer maximizes its objective $O_\text{base}$ by choosing a mesa-optimizer with parameterization $\theta$ based on the mesa-optimizer's policy $\pi_\theta$, but not based on the objective function $O_\text{mesa}$ that the mesa-optimizer uses to compute this policy. Depending on the base optimizer, we will think of $O_\text{base}$ as the negative of the loss, the future discounted reward, or simply some fitness function by which learned algorithms are being selected.
 
