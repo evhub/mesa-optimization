@@ -240,3 +240,54 @@ TSWLatexianTemp*
 
 # generated if using elsarticle.cls
 *.spl
+
+# python
+*.py[cod]
+*~
+.#*
+._*
+\#*\#
+.cache
+
+# Development Environment
+venv
+
+# Packages
+*.egg
+*.egg-info
+dist
+build
+eggs
+parts
+bin
+var
+sdist
+develop-eggs
+.installed.cfg
+lib
+lib64
+*.iml
+*.log
+.venv.touch
+
+# Installer logs
+pip-log.txt
+
+# Unit test / coverage reports
+.coverage
+coverage-html
+.tox
+nosetests.xml
+
+# Sphinx
+docs/build
+
+# Vim
+*.sw[nop]
+.ropeproject
+
+# Sublime
+*.sublime-*
+
+# OS X
+.DS_Store
