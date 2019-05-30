@@ -98,7 +98,7 @@ cite_grammar = (
 
 @tokens_as_dict(assert_keys=("cite",))
 def cite_replace(tokens):
-    return "[(TODO:" + tokens["cite"] + ")](https://intelligence.org/learned-optimization)"
+    return "[(TODO:" + tokens["cite"] + ")](https://intelligence.org/learned-optimization#bibliography)"
 
 patterns_list.append((cite_grammar, cite_replace))
 
