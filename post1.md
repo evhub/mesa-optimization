@@ -1,6 +1,6 @@
 _This is the first of five posts in the Mesa-Optimization Sequence based on the upcoming MIRI paper “Risks from Learned Optimization in Advanced Machine Learning Systems” by Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott Garrabrant. Each post in the sequence corresponds to a different section of the paper, with the full paper set to be published on the MIRI blog with the release of the last post in the sequence._
 
-_With special thanks to Paul Christiano, Eric Drexler, Rob Bensinger, Jan Leike, Rohin Shah, William Saunders, Buck Shlegeris, David Dalrymple, Abram Demski, Stuart Armstrong, Linda Linsefors, Carl Shulman, Toby Ord, and everyone else who provided feedback on earlier versions of the paper._
+_With special thanks to Paul Christiano, Eric Drexler, Rob Bensinger, Jan Leike, Rohin Shah, William Saunders, Buck Shlegeris, David Dalrymple, Abram Demski, Stuart Armstrong, Linda Linsefors, Carl Shulman, Toby Ord, and everyone else who provided feedback on earlier versions of this sequence._
 
 # Motivation
 
@@ -43,7 +43,7 @@ There need not always be a mesa-objective since the algorithm found by the base 
 
 ![](https://i.imgur.com/snCO8OV.jpg)
 
-**Figure 1.1.** _The relationship between the base and mesa-optimizer. The base optimizer optimizes the learned algorithm based on its performance on the base objective. In order to do so, the base optimizer may have turned this learned algorithm into a mesa-optimizer, in which case the mesa-optimizer itself runs an optimization algorithm based on its own mesa-objective. Regardless, it is the learned algorithm that directly takes actions based on its input._
+**Figure 1.1.** _The relationship between the base and mesa- optimizer. The base optimizer optimizes the learned algorithm based on its performance on the base objective. In order to do so, the base optimizer may have turned this learned algorithm into a mesa-optimizer, in which case the mesa-optimizer itself runs an optimization algorithm based on its own mesa-objective. Regardless, it is the learned algorithm that directly takes actions based on its input._
 
 **Possible misunderstanding: “mesa-optimizer” does not mean “subsystem” or “subagent.”** In the context of deep learning, a mesa-optimizer is simply a neural network that is implementing some optimization process and not some emergent subagent inside that neural network. Mesa-optimizers are simply a particular type of algorithm that the base optimizer might find to solve its task. Furthermore, we will generally be thinking of the base optimizer as a straightforward optimization algorithm, and not as an intelligent agent choosing to create a subagent (though some of our considerations apply even in that case).
 
@@ -57,7 +57,7 @@ Arguably, any possible system has a behavioral objective—including bricks and 
 
 [^6]: This objective is by definition trivially optimal in any situation that the bottlecap finds itself in.
 
-[^7]: Ultimately, our worry is optimization in the direction of some coherent but unsafe objective. In this paper, we assume that search provides sufficient structure to expect coherent objectives. While we believe this is a reasonable assumption, it is unclear both whether search is necessary and whether it is sufficient. Further work examining this assumption will likely be needed.
+[^7]: Ultimately, our worry is optimization in the direction of some coherent but unsafe objective. In this sequence, we assume that search provides sufficient structure to expect coherent objectives. While we believe this is a reasonable assumption, it is unclear both whether search is necessary and whether it is sufficient. Further work examining this assumption will likely be needed.
 
 A given mesa-optimizer’s mesa-objective is determined entirely by its internal workings. Once training is finished and a learned algorithm is selected, its direct output—e.g. the actions taken by an RL agent—no longer depends on the base objective. Thus, it is the mesa-objective, not the base objective, that determines a mesa-optimizer’s behavioral objective. Of course, to the degree that the learned algorithm was selected on the basis of the base objective, its output will score well on the base objective. However, in the case of a distributional shift, we should expect a mesa-optimizer’s behavior to more robustly optimize for the mesa-objective since its behavior is directly computed according to it.
 
