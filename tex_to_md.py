@@ -16,7 +16,11 @@ from undebt.pattern.common import (
     ANY_CHAR,
     NUM,
 )
-from undebt.cmd.main import process
+from undebt.cmd.logic import (
+    create_find_and_replace,
+    parse_grammar,
+    _transform_results,
+)
 
 
 # util:
@@ -114,7 +118,7 @@ def footnote_replace(tokens):
     footnotes_seen += 1
     return (
         "[^" + str(footnotes_seen) + "] "
-        + tokens["text"]
+        + tokens["text"] + "\n"
         + "[^" + str(footnotes_seen) + "]: "
         + tokens["footnote"] + "\n\n"
     )
@@ -163,7 +167,7 @@ cref_sec_grammar = (
 
 @tokens_as_dict(assert_keys=("num",))
 def cref_sec_replace(tokens):
-    return "post " + tokens["num"]
+    return "post " + tokens["num"] + " (TODO)"
 
 patterns_list.append((cref_sec_grammar, cref_sec_replace))
 
@@ -175,7 +179,7 @@ Cref_sec_grammar = (
 
 @tokens_as_dict(assert_keys=("num",))
 def Cref_sec_replace(tokens):
-    return "Post " + tokens["num"]
+    return "Post " + tokens["num"] + " (TODO)"
 
 patterns_list.append((Cref_sec_grammar, Cref_sec_replace))
 
@@ -252,6 +256,38 @@ def close_quote_replace(tokens):
 patterns_list.append((close_quote_grammar, close_quote_replace))
 
 
+# newline artifacts:
+nl_artifact_grammar = Literal("\n\n\n")
+
+def nl_artifact_replace(tokens):
+    return "\n\n"
+
+patterns_list.append((nl_artifact_grammar, nl_artifact_replace))
+
+
 # main:
+def main(filename):
+    with open(filename, "tr+", encoding="utf-8") as fp:
+        text = fp.read()
+
+        for i, (grammar, replace) in enumerate(patterns_list):
+            print("running pattern {}...".format(replace.__name__[:-len("_replace")]))
+
+            # keep running grammar until it stops producing results
+            j = 0
+            while True:
+                print("\tpass {}...".format(j + 1))
+                j += 1
+                find_and_replace = create_find_and_replace(grammar, replace)
+                results = parse_grammar(find_and_replace, text)
+                if not results:
+                    break
+                else:
+                    text = _transform_results(results, text)
+
+        fp.seek(0)
+        fp.truncate()
+        fp.write(text)
+
 if __name__ == "__main__":
-    process(patterns_list, "./post1.md", dry_run=False)
+    main("./post1.md")
