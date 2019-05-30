@@ -62,7 +62,7 @@ subsection_grammar = (
 
 @tokens_as_dict(assert_keys=("name", "num"))
 def subsection_replace(tokens):
-    return "# " + tokens["num"] + "\\. " + tokens["name"] + "\n"
+    return "## " + tokens["num"] + "\\. " + tokens["name"] + "\n"
 
 patterns_list.append((subsection_grammar, subsection_replace))
 
@@ -221,7 +221,7 @@ figure_grammar = (
 @tokens_as_dict(assert_keys=("image", "caption", "num"))
 def figure_replace(tokens):
     return (
-        "![](" + tokens["image"] + ")\n\n"
+        "![](TODO:" + tokens["image"] + ")\n\n"
         + "**Figure " + tokens["num"]
         + ".** _" + tokens["caption"] + "_"
     )
