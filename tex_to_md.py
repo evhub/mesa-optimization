@@ -256,6 +256,15 @@ def close_quote_replace(tokens):
 patterns_list.append((close_quote_grammar, close_quote_replace))
 
 
+# paper:
+paper_grammar = Literal("paper")
+
+def paper_replace(tokens):
+    return "sequence (TODO)"
+
+patterns_list.append((paper_grammar, paper_replace))
+
+
 # newline artifacts:
 nl_artifact_grammar = Literal("\n\n\n")
 
