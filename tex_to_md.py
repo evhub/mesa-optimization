@@ -285,7 +285,7 @@ def nl_artifact_replace(tokens):
 patterns_list.append((nl_artifact_grammar, nl_artifact_replace))
 
 
-# math
+# math:
 math_grammar = (
     Literal("\\[")
     | Literal("\\]")
@@ -297,7 +297,7 @@ def math_replace(tokens):
 patterns_list.append((math_grammar, math_replace))
 
 
-# begin align*
+# begin align*:
 begin_align_grammar = Literal("\\begin{align*}")
 
 def begin_align_replace(tokens):
@@ -306,13 +306,31 @@ def begin_align_replace(tokens):
 patterns_list.append((begin_align_grammar, begin_align_replace))
 
 
-# end align*
+# end align*:
 end_align_grammar = Literal("\\end{align*}")
 
 def end_align_replace(tokens):
     return "\\end{align*}$$"
 
 patterns_list.append((end_align_grammar, end_align_replace))
+
+
+# argmax:
+argmax_grammar = Literal("\\argmax")
+
+def argmax_replace(tokens):
+    return "\\text{argmax}"
+
+patterns_list.append((argmax_grammar, argmax_replace))
+
+
+# argmin:
+argmin_grammar = Literal("\\argmin")
+
+def argmin_replace(tokens):
+    return "\\text{argmin}"
+
+patterns_list.append((argmin_grammar, argmin_replace))
 
 
 # main:

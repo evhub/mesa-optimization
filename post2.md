@@ -36,7 +36,7 @@ Suppose an environment is composed of $N$ different instances, each of which req
 Thus, if we assume that, for a given $P$, the base optimizer will select the value of $x$ that maximizes the minimum level of performance, and thus the total optimization power applied to each instance, we get[^4]
 
 $$
-    x = \argmax_x~ \frac{P - f(x)}{N} + x.
+    x = \text{argmax}_x~ \frac{P - f(x)}{N} + x.
 $$
 
 [^4]: Subject to the constraint that $x - f(y) \ge 0$.
