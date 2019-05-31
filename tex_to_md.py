@@ -8,12 +8,12 @@ from undebt.pyparsing import (
     SkipTo,
     OneOrMore,
     originalTextFor,
+    nestedExpr,
 )
 from undebt.pattern.common import (
-    BRACES,
-    BRACKETS,
     NL,
     ANY_CHAR,
+    WHITE,
     NUM,
 )
 from undebt.cmd.logic import (
@@ -24,15 +24,17 @@ from undebt.cmd.logic import (
 
 
 # util:
-REST_OF_LINE = originalTextFor(ANY_CHAR + SkipTo(NL) + NL)
+NUM = originalTextFor(NUM)
+
+REST_OF_LINE = originalTextFor(NL | (ANY_CHAR | WHITE) + SkipTo(NL) + NL)
 
 @tokens_as_list(assert_len=1)
 def trim(tokens):
     return tokens[0][1:-1]
 
-BRACES_TEXT = attach(BRACES, trim)
+BRACES = attach(originalTextFor(nestedExpr("{", "}", ignoreExpr=NL)), trim)
 
-NUM_TEXT = originalTextFor(NUM)
+BRACKETS = attach(originalTextFor(nestedExpr("[", "]", ignoreExpr=NL)), trim)
 
 
 # setup:
@@ -41,8 +43,8 @@ patterns_list = []
 
 # section:
 section_grammar = (
-    Literal("\\section") + BRACES_TEXT("name") + NL
-    + Literal("\\label{sec:") + NUM_TEXT("num") + Literal("}") + NL
+    Literal("\\section") + BRACES("name") + NL
+    + Literal("\\label{sec:") + NUM("num") + Literal("}") + NL
     + Literal("\\cftchapterprecistoc") + BRACES + NL
 )
 
@@ -55,8 +57,8 @@ patterns_list.append((section_grammar, section_replace))
 
 # subsection:
 subsection_grammar = (
-    Literal("\\subsection") + BRACES_TEXT("name") + NL
-    + Literal("\\label{sec:") + NUM_TEXT("num") + Literal("}") + NL
+    Literal("\\subsection") + BRACES("name") + NL
+    + Literal("\\label{sec:") + NUM("num") + Literal("}") + NL
     + Literal("\\cftchapterprecistoc") + BRACES + NL
 )
 
@@ -69,7 +71,7 @@ patterns_list.append((subsection_grammar, subsection_replace))
 
 # ital:
 ital_grammar = (
-    Literal("\\textit") + BRACES_TEXT("text")
+    Literal("\\textit") + BRACES("text")
 )
 
 @tokens_as_dict(assert_keys=("text",))
@@ -81,7 +83,7 @@ patterns_list.append((ital_grammar, ital_replace))
 
 # bf:
 bf_grammar = (
-    Literal("\\textbf") + BRACES_TEXT("text")
+    Literal("\\textbf") + BRACES("text")
 )
 
 @tokens_as_dict(assert_keys=("text",))
@@ -93,7 +95,7 @@ patterns_list.append((bf_grammar, bf_replace))
 
 # cite:
 cite_grammar = (
-    Literal("\\cite") + BRACES_TEXT("cite")
+    Literal("\\cite") + BRACES("cite")
 )
 
 @tokens_as_dict(assert_keys=("cite",))
@@ -105,7 +107,7 @@ patterns_list.append((cite_grammar, cite_replace))
 
 # footnote:
 footnote_grammar = (
-    Literal("\\footnote") + BRACES_TEXT("footnote")
+    Literal("\\footnote") + BRACES("footnote")
     + REST_OF_LINE("text")
 )
 
@@ -137,7 +139,7 @@ enumerate_grammar = (
 def enumerate_replace(tokens):
     out = "\n"
     for i, item in enumerate(tokens):
-        out += str(i + 1) + "." + item
+        out += str(i + 1) + ". " + item
     return out
 
 patterns_list.append((enumerate_grammar, enumerate_replace))
@@ -154,7 +156,7 @@ itemize_grammar = (
 def itemize_replace(tokens):
     out = ""
     for item in tokens:
-        out += "-" + item
+        out += "- " + item
     return out
 
 patterns_list.append((itemize_grammar, itemize_replace))
@@ -162,7 +164,7 @@ patterns_list.append((itemize_grammar, itemize_replace))
 
 # cref sec:
 cref_sec_grammar = (
-    Literal("\\cref{sec:") + NUM_TEXT("num") + Literal("}")
+    Literal("\\cref{sec:") + NUM("num") + Literal("}")
 )
 
 @tokens_as_dict(assert_keys=("num",))
@@ -174,7 +176,7 @@ patterns_list.append((cref_sec_grammar, cref_sec_replace))
 
 # Cref sec:
 Cref_sec_grammar = (
-    Literal("\\Cref{sec:") + NUM_TEXT("num") + Literal("}")
+    Literal("\\Cref{sec:") + NUM("num") + Literal("}")
 )
 
 @tokens_as_dict(assert_keys=("num",))
@@ -186,7 +188,7 @@ patterns_list.append((Cref_sec_grammar, Cref_sec_replace))
 
 # cref fig:
 cref_fig_grammar = (
-    Literal("\\cref{fig:") + NUM_TEXT("num") + Literal("}")
+    Literal("\\cref{fig:") + NUM("num") + Literal("}")
 )
 
 @tokens_as_dict(assert_keys=("num",))
@@ -198,7 +200,7 @@ patterns_list.append((cref_fig_grammar, cref_fig_replace))
 
 # Cref fig:
 Cref_fig_grammar = (
-    Literal("\\Cref{fig:") + NUM_TEXT("num") + Literal("}")
+    Literal("\\Cref{fig:") + NUM("num") + Literal("}")
 )
 
 @tokens_as_dict(assert_keys=("num",))
@@ -212,9 +214,9 @@ patterns_list.append((Cref_fig_grammar, Cref_fig_replace))
 figure_grammar = (
     Literal("\\begin{figure}") + BRACKETS + NL
     + Literal("\\centering") + NL
-    + Literal("\\includegraphics") + BRACKETS + BRACES_TEXT("image") + NL
-    + Literal("\\caption") + BRACES_TEXT("caption") + NL
-    + Literal("\\label{fig:") + NUM_TEXT("num") + Literal("}") + NL
+    + Literal("\\includegraphics") + BRACKETS + BRACES("image") + NL
+    + Literal("\\caption") + BRACES("caption") + NL
+    + Literal("\\label{fig:") + NUM("num") + Literal("}") + NL
     + Literal("\\end{figure}")
 )
 
@@ -265,6 +267,15 @@ def paper_replace(tokens):
 patterns_list.append((paper_grammar, paper_replace))
 
 
+# section:
+section_grammar = Literal("section")
+
+def section_replace(tokens):
+    return "post (TODO)"
+
+patterns_list.append((section_grammar, section_replace))
+
+
 # newline artifacts:
 nl_artifact_grammar = Literal("\n\n\n")
 
@@ -274,10 +285,43 @@ def nl_artifact_replace(tokens):
 patterns_list.append((nl_artifact_grammar, nl_artifact_replace))
 
 
+# math
+math_grammar = (
+    Literal("\\[")
+    | Literal("\\]")
+)
+
+def math_replace(tokens):
+    return "$$"
+
+patterns_list.append((math_grammar, math_replace))
+
+
+# begin align*
+begin_align_grammar = Literal("\\begin{align*}")
+
+def begin_align_replace(tokens):
+    return "$$\\begin{align*}"
+
+patterns_list.append((begin_align_grammar, begin_align_replace))
+
+
+# end align*
+end_align_grammar = Literal("\\end{align*}")
+
+def end_align_replace(tokens):
+    return "\\end{align*}$$"
+
+patterns_list.append((end_align_grammar, end_align_replace))
+
+
 # main:
 def main(filename):
     with open(filename, "tr+", encoding="utf-8") as fp:
         text = fp.read()
+
+        global footnotes_seen
+        footnotes_seen += text.count("[^") // 2
 
         for i, (grammar, replace) in enumerate(patterns_list):
             print("running pattern {}...".format(replace.__name__[:-len("_replace")]))
@@ -299,4 +343,4 @@ def main(filename):
         fp.write(text)
 
 if __name__ == "__main__":
-    main("./post1.md")
+    main("./post2.md")
