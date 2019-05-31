@@ -2,13 +2,13 @@ _This is the first of five posts in the Mesa-Optimization Sequence based on the 
 
 _With special thanks to Paul Christiano, Eric Drexler, Rob Bensinger, Jan Leike, Rohin Shah, William Saunders, Buck Shlegeris, David Dalrymple, Abram Demski, Stuart Armstrong, Linda Linsefors, Carl Shulman, Toby Ord, and everyone else who provided feedback on earlier versions of this sequence._
 
-# Motivation
+## Motivation
 
 The goal of this sequence is to analyze the type of learned optimization that occurs when a learned model (such as a neural network) is itself an optimizer—a situation we refer to as _mesa-optimization._ We believe that the possibility of mesa-optimization raises two important questions for the safety and transparency of advanced machine learning systems. First, under what circumstances will learned models be optimizers, including when they should not be? Second, when a learned model is an optimizer, what will its objective be—how will it differ from the loss function it was trained under—and how can it be aligned?
 
 We believe that this sequence presents the most thorough analysis of these questions that has been conducted to date. In particular, we plan to present not only an introduction to the basic concerns surrounding mesa-optimizers, but also an analysis of the particular aspects of an AI system that we believe are likely to make the problems related to mesa-optimization relatively easier or harder to solve. By providing a framework for understanding the degree to which different AI systems are likely to be robust to misaligned mesa-optimization, we hope to start a discussion about the best ways of structuring machine learning systems to solve these problems. Furthermore, in the fourth post we will provide what we think is the most detailed analysis yet of a problem we refer as _deceptive alignment_ which we posit may present one of the largest—though not necessarily insurmountable—current obstacles to producing safe advanced machine learning systems using techniques similar to modern machine learning.
 
-# Two questions
+## Two questions
 
 In machine learning, we do not manually program each individual parameter of our models. Instead, we specify an objective function that captures what we want the system to do and a learning algorithm to optimize the system for that objective. In this post, we present a framework that distinguishes what a system is _optimized_ to do (its “purpose”), from what it _optimizes_ for (its “goal”), if it optimizes for anything at all. While all AI systems are optimized for something (have a purpose), whether they actually optimize for anything (pursue a goal) is non-trivial. We will say that a system is an _optimizer_ if it is internally searching through a search space (consisting of possible outputs, policies, plans, strategies, or similar) looking for those elements that score high according to some objective function that is explicitly represented within the system. Learning algorithms in machine learning are optimizers because they search through a space of possible parameters—e.g. neural network weights—and improve the parameters with respect to some objective. Planning algorithms are also optimizers, since they search through possible plans, picking those that do well according to some objective.
 
@@ -27,7 +27,7 @@ The possibility of mesa-optimizers has important implications for the safety of 
 
 Once we have introduced our framework in this post, we will address the first question in the second, begin addressing the second question in the third post, and finally delve deeper into a specific aspect of the second question in the fourth post.
 
-# 1.1. Base optimizers and mesa-optimizers
+## 1.1. Base optimizers and mesa-optimizers
 
 Conventionally, the base optimizer in a machine learning setup is some sort of gradient descent process with the goal of creating a model designed to accomplish some specific task.
 
@@ -67,7 +67,7 @@ As an example to illustrate the base/mesa distinction in a different domain, and
 
 However, humans tend not to place explicit value on evolution’s objective, at least in terms of caring about their alleles' frequency in the population. The objective function stored in the human brain is not the same as the objective function of evolution. Thus, when humans display novel behavior optimized for their own objectives, they can perform very poorly according to evolution’s objective. Making a decision not to have children is a possible example of this. Therefore, we can think of evolution as a base optimizer that produced brains—mesa-optimizers—which then actually produce organisms’ behavior—behavior that is not necessarily aligned with evolution.
 
-# 1.2. The inner and outer alignment problems
+## 1.2. The inner and outer alignment problems
 
 In “Scalable agent alignment via reward modeling,” Leike et al. describe the concept of the “reward-result gap” as the difference between the (in their case learned) “reward model” (what we call the base objective) and the “reward function that is recovered with perfect inverse reinforcement learning” (what we call the behavioral objective).[(8)](https://intelligence.org/learned-optimization#bibliography) That is, the reward-result gap is the fact that there can be a difference between what a learned algorithm is observed to be doing and what the programmers want it to be doing.
 
@@ -75,7 +75,7 @@ The problem posed by misaligned mesa-optimizers is a kind of reward-result gap. 
 
 It might not be necessary to solve the inner alignment problem in order to produce safe, highly capable AI systems, as it might be possible to prevent mesa-optimizers from occurring in the first place. If mesa-optimizers cannot be reliably prevented, however, then some solution to both the outer and inner alignment problems will be necessary to ensure that mesa-optimizers are aligned with the intended goal of the programmers.
 
-# 1.3. Robust alignment vs. pseudo-alignment
+## 1.3. Robust alignment vs. pseudo-alignment
 
 Given enough training, a mesa-optimizer should eventually be able to produce outputs that score highly on the base objective on the training distribution. Off the training distribution, however—and even on the training distribution while it is still early in the training process—the difference could be arbitrarily large. We will use the term _robustly aligned_ to refer to mesa-optimizers with mesa-objectives that robustly agree with the base objective across distributions and the term _pseudo-aligned_ to refer to mesa-optimizers with mesa-objectives that agree with the base objective on past training data, but not robustly across possible future data (either in testing, deployment, or further training). For a pseudo-aligned mesa-optimizer, there will be environments in which the base and mesa- objectives diverge. Pseudo-alignment, therefore, presents a potentially dangerous robustness problem since it opens up the possibility of a machine learning system that competently takes actions to achieve something other than the intended goal when off the training distribution. That is, its capabilities might generalize while its objective does not.
 
@@ -83,7 +83,7 @@ For a toy example of what pseudo-alignment might look like, consider an RL agent
 
 [^9]: Of course, it might also fail to generalize at all.
 
-# 1.4. Mesa-optimization as a safety problem
+## 1.4. Mesa-optimization as a safety problem
 
 If pseudo-aligned mesa-optimizers may arise in advanced ML systems, as we will suggest, they could pose two critical safety problems.
 
