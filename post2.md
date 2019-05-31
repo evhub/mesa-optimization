@@ -89,6 +89,6 @@ Lastly, another form of bias that might have particularly interesting effects is
 
 &nbsp;
 
-_The third post in the Mesa-Optimization Sequence, titled “The inner alignment problem,” will be released in two days._
+_The third post in the Mesa-Optimization Sequence, titled “The Inner Alignment Problem,” will be released in two days._
 
 [Glossary](https://intelligence.org/learned-optimization/#glossary) | [Bibliography](https://intelligence.org/learned-optimization/#bibliography)

@@ -107,6 +107,6 @@ It may be that pseudo-aligned mesa-optimizers are easy to address—if there exi
 
 &nbsp;
 
-_The second post in the Mesa-Optimization Sequence, titled “Conditions for Mesa-optimization,” will be released in two days._
+_The second post in the Mesa-Optimization Sequence, titled “Conditions for Mesa-Optimization,” will be released in two days._
 
 [Glossary](https://intelligence.org/learned-optimization/#glossary) | [Bibliography](https://intelligence.org/learned-optimization/#bibliography)
