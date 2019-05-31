@@ -43,7 +43,7 @@ There need not always be a mesa-objective since the algorithm found by the base 
 
 ![](https://i.imgur.com/snCO8OV.jpg)
 
-**Figure 1.1.** _The relationship between the base and mesa- optimizer. The base optimizer optimizes the learned algorithm based on its performance on the base objective. In order to do so, the base optimizer may have turned this learned algorithm into a mesa-optimizer, in which case the mesa-optimizer itself runs an optimization algorithm based on its own mesa-objective. Regardless, it is the learned algorithm that directly takes actions based on its input._
+**Figure 1.1.** _The relationship between the base and mesa- optimizers. The base optimizer optimizes the learned algorithm based on its performance on the base objective. In order to do so, the base optimizer may have turned this learned algorithm into a mesa-optimizer, in which case the mesa-optimizer itself runs an optimization algorithm based on its own mesa-objective. Regardless, it is the learned algorithm that directly takes actions based on its input._
 
 **Possible misunderstanding: “mesa-optimizer” does not mean “subsystem” or “subagent.”** In the context of deep learning, a mesa-optimizer is simply a neural network that is implementing some optimization process and not some emergent subagent inside that neural network. Mesa-optimizers are simply a particular type of algorithm that the base optimizer might find to solve its task. Furthermore, we will generally be thinking of the base optimizer as a straightforward optimization algorithm, and not as an intelligent agent choosing to create a subagent (though some of our considerations apply even in that case).
 
