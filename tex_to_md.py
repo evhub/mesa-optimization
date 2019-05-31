@@ -48,7 +48,7 @@ section_grammar = (
 
 @tokens_as_dict(assert_keys=("name", "num"))
 def section_replace(tokens):
-    return "## " + tokens["name"] + "\n"
+    return "&nbsp;\n\n## " + tokens["name"] + "\n"
 
 patterns_list.append((section_grammar, section_replace))
 
