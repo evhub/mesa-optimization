@@ -137,7 +137,7 @@ enumerate_grammar = (
 def enumerate_replace(tokens):
     out = "\n"
     for i, item in enumerate(tokens):
-        out += str(i + 1) + ". " + item
+        out += str(i + 1) + "." + item
     return out
 
 patterns_list.append((enumerate_grammar, enumerate_replace))
@@ -154,7 +154,7 @@ itemize_grammar = (
 def itemize_replace(tokens):
     out = ""
     for item in tokens:
-        out += "- " + item
+        out += "-" + item
     return out
 
 patterns_list.append((itemize_grammar, itemize_replace))
