@@ -47,7 +47,7 @@ $$
     x = \text{argmax}_x~ \frac{P - f(x)}{N} + x.
 $$
 
-[^4]: Subject to the constraint that $x - f(y) \ge 0$.
+[^4]: Subject to the constraint that $P - f(x) \ge 0$.
 
 As one moves to more and more diverse environments—that is, as $N$ increases—this model suggests that $x$ will dominate $\frac{P - f(x)}{N}$, implying that mesa-optimization will become more and more favorable. Of course, this is simply a toy model, as it makes many questionable simplifying assumptions. Nevertheless, it sketches an argument for a pull towards mesa-optimization in sufficiently diverse environments.
 
