@@ -1,4 +1,4 @@
-_This is the first of five posts in the Mesa-Optimization Sequence based on the upcoming MIRI paper “Risks from Learned Optimization in Advanced Machine Learning Systems” by Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott Garrabrant. Each post in the sequence corresponds to a different section of the paper, with the full paper set to be published on the MIRI blog with the release of the last post in the sequence._
+_This is the first of five posts in the [Mesa-Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB) based on the upcoming MIRI paper “Risks from Learned Optimization in Advanced Machine Learning Systems” by Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott Garrabrant. Each post in the sequence corresponds to a different section of the paper, with the full paper set to be published on the MIRI blog with the release of the last post in the sequence._
 
 _With special thanks to Paul Christiano, Eric Drexler, Rob Bensinger, Jan Leike, Rohin Shah, William Saunders, Buck Shlegeris, David Dalrymple, Abram Demski, Stuart Armstrong, Linda Linsefors, Carl Shulman, Toby Ord, and everyone else who provided feedback on earlier versions of this sequence._
 
@@ -107,6 +107,6 @@ It may be that pseudo-aligned mesa-optimizers are easy to address—if there exi
 
 &nbsp;
 
-_The second post in the Mesa-Optimization Sequence, titled “Conditions for Mesa-Optimization,” will be released in two days._
+_The second post in the [Mesa-Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB), titled “Conditions for Mesa-Optimization,” can be found [here](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB/p/q2rCMHNXazALgQpGH)._
 
 [Glossary](https://intelligence.org/learned-optimization/#glossary) | [Bibliography](https://intelligence.org/learned-optimization/#bibliography)

@@ -1,8 +1,8 @@
-_This is the second of five posts in the Mesa-Optimization Sequence based on the upcoming MIRI paper “Risks from Learned Optimization in Advanced Machine Learning Systems” by Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott Garrabrant. Each post in the sequence corresponds to a different section of the paper, with the full paper set to be published on the MIRI blog with the release of the last post in the sequence._
+_This is the second of five posts in the [Mesa-Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB) based on the upcoming MIRI paper “Risks from Learned Optimization in Advanced Machine Learning Systems” by Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott Garrabrant. Each post in the sequence corresponds to a different section of the paper, with the full paper set to be published on the MIRI blog with the release of the last post in the sequence._
 
 &nbsp;
 
-In this post, we consider how the following two components of a particular machine learning system might influence whether it will produce a mesa-optimizer:
+In this post, we consider how the following two components of a particular machine learning system might influence whether it will produce a [mesa-optimizer](https://www.alignmentforum.org/posts/FkgsxrGf3QxhfLWHG/risks-from-learned-optimization-introduction):
 
 1. **The task:** The training distribution and base objective function.
 2. **The base optimizer:** The machine learning algorithm and model architecture.
@@ -11,11 +11,19 @@ We deliberately choose to present theoretical considerations for why mesa-optimi
 
 [^1]: As of the date of this post. Note that we do examine some existing machine learning systems that we believe are close to producing mesa-optimization in post 5.
 
+&nbsp;
+
 ## 2.1. The task
 
 Some tasks benefit from mesa-optimizers more than others. For example, tic-tac-toe can be perfectly solved by simple rules. Thus, a base optimizer has no need to generate a mesa-optimizer to solve tic-tac-toe, since a simple learned algorithm implementing the rules for perfect play will do. Human survival in the savanna, by contrast, did seem to benefit from mesa-optimization. Below, we discuss the properties of tasks that may influence the likelihood of mesa-optimization.
 
-**Better generalization through search.** To be able to consistently achieve a certain level of performance in an environment, we hypothesize that there will always have to be some minimum amount of optimization power that must be applied to find a policy that performs that well. To see this, we can think of optimization power as being measured in terms of the number of times the optimizer is able to divide the search space in half—that is, the number of bits of information provided.[(9)](https://intelligence.org/learned-optimization#bibliography) After these divisions, there will be some remaining space of policies that the optimizer is unable to distinguish between. Then, to ensure that all policies in the remaining space have some minimum level of performance—to provide a performance lower bound[^2] —will always require the original space to be divided some minimum number of times—that is, there will always have to be some minimum bits of optimization power applied. However, there are two distinct levels at which this optimization power could be expended: the base optimizer could expend optimization power selecting a highly-tuned learned algorithm, or the learned algorithm could itself expend optimization power selecting highly-tuned actions. As a mesa-optimizer is just a learned algorithm that itself performs optimization, the degree to which mesa-optimizers will be incentivized in machine learning systems is likely to be dependent on which of these levels it is more advantageous for the system to perform optimization. For many current machine learning models, where we expend vastly more computational resources training the model than running it, it seems generally favorable for most of the optimization work to be done by the base optimizer, with the resulting learned algorithm being simply a network of highly-tuned heuristics rather than a mesa-optimizer.
+**Better generalization through search.** To be able to consistently achieve a certain level of performance in an environment, we hypothesize that there will always have to be some minimum amount of optimization power that must be applied to find a policy that performs that well.
+
+To see this, we can think of optimization power as being measured in terms of the number of times the optimizer is able to divide the search space in half—that is, the number of bits of information provided.[(9)](https://intelligence.org/learned-optimization#bibliography) After these divisions, there will be some remaining space of policies that the optimizer is unable to distinguish between. Then, to ensure that all policies in the remaining space have some minimum level of performance—to provide a performance lower bound[^2] —will always require the original space to be divided some minimum number of times—that is, there will always have to be some minimum bits of optimization power applied.
+
+However, there are two distinct levels at which this optimization power could be expended: the base optimizer could expend optimization power selecting a highly-tuned learned algorithm, or the learned algorithm could itself expend optimization power selecting highly-tuned actions.
+
+As a mesa-optimizer is just a learned algorithm that itself performs optimization, the degree to which mesa-optimizers will be incentivized in machine learning systems is likely to be dependent on which of these levels it is more advantageous for the system to perform optimization. For many current machine learning models, where we expend vastly more computational resources training the model than running it, it seems generally favorable for most of the optimization work to be done by the base optimizer, with the resulting learned algorithm being simply a network of highly-tuned heuristics rather than a mesa-optimizer.
 
 [^2]: It is worth noting that the same argument also holds for achieving an average-case guarantee.
 
@@ -59,6 +67,8 @@ The environment need not necessarily be too diverse for this sort of effect to a
 
 Thus, tasks that do not benefit from human modeling seem less likely to produce mesa-optimizers than those that do. Furthermore, there are many tasks that might benefit from human modeling that don't explicitly involve modeling humans—to the extent that the training distribution is generated by humans, for example, modeling humans might enable the generation of a very good prior for that distribution.
 
+&nbsp;
+
 ## 2.2. The base optimizer
 
 It is likely that certain features of the base optimizer will influence how likely it is to generate a mesa-optimizer. First, though we largely focus on reinforcement learning in this sequence, RL is not necessarily the only type of machine learning where mesa-optimizers could appear. For example, it seems plausible that mesa-optimizers could appear in generative adversarial networks.
@@ -89,6 +99,6 @@ Lastly, another form of bias that might have particularly interesting effects is
 
 &nbsp;
 
-_The third post in the Mesa-Optimization Sequence, titled “The Inner Alignment Problem,” will be released in two days._
+_The third post in the [Mesa-Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB), titled “The Inner Alignment Problem,” will be released in two days._
 
 [Glossary](https://intelligence.org/learned-optimization/#glossary) | [Bibliography](https://intelligence.org/learned-optimization/#bibliography)
