@@ -64,7 +64,7 @@ subsection_grammar = (
 
 @tokens_as_dict(assert_keys=("name", "num"))
 def subsection_replace(tokens):
-    return "## " + tokens["num"] + ". " + tokens["name"] + "\n"
+    return "&nbsp;\n\n## " + tokens["num"] + ". " + tokens["name"] + "\n"
 
 patterns_list.append((subsection_grammar, subsection_replace))
 
@@ -298,19 +298,19 @@ patterns_list.append((math_grammar, math_replace))
 
 
 # begin align*:
-begin_align_grammar = Literal("\\begin{align*}")
+begin_align_grammar = NL + Literal("\\begin{align*}")
 
 def begin_align_replace(tokens):
-    return "$$\\begin{align*}"
+    return "\n$$\\begin{align*}"
 
 patterns_list.append((begin_align_grammar, begin_align_replace))
 
 
 # end align*:
-end_align_grammar = Literal("\\end{align*}")
+end_align_grammar = Literal("\\end{align*}") + NL
 
 def end_align_replace(tokens):
-    return "\\end{align*}$$"
+    return "\\end{align*}$$\n"
 
 patterns_list.append((end_align_grammar, end_align_replace))
 
@@ -331,6 +331,16 @@ def argmin_replace(tokens):
     return "\\text{argmin}"
 
 patterns_list.append((argmin_grammar, argmin_replace))
+
+
+# comments:
+comment_grammar = NL + Literal("%") + REST_OF_LINE("comment")
+
+@tokens_as_dict(assert_keys=("comment",))
+def comment_replace(tokens):
+    return "\nTODO:" + tokens["comment"]
+
+patterns_list.append((comment_grammar, comment_replace))
 
 
 # main:
@@ -361,4 +371,4 @@ def main(filename):
         fp.write(text)
 
 if __name__ == "__main__":
-    main("./post2.md")
+    main("./post3.md")
