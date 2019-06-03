@@ -27,7 +27,9 @@ As a mesa-optimizer is just a learned algorithm that itself performs optimizatio
 
 [^2]: It is worth noting that the same argument also holds for achieving an average-case guarantee.
 
-We are already encountering some problems, however—Go, Chess, and Shogi, for example—for which this approach does not scale. Indeed, our best current algorithms for those tasks involve explicitly making an optimizer (hard-coded Monte-Carlo tree search with learned heuristics) that does optimization work on the level of the learned algorithm rather than having all the optimization work done by the base optimizer.[(10)](https://intelligence.org/learned-optimization#bibliography) Arguably, this sort of task is only adequately solvable this way—if it were possible to train a straightforward DQN agent to perform well at Chess, it plausibly would _have_ to learn to internally perform something like a tree search, producing a mesa-optimizer.
+We are already encountering some problems, however—Go, Chess, and Shogi, for example—for which this approach does not scale. Indeed, our best current algorithms for those tasks involve explicitly making an optimizer (hard-coded Monte-Carlo tree search with learned heuristics) that does optimization work on the level of the learned algorithm rather than having all the optimization work done by the base optimizer.[(10)](https://intelligence.org/learned-optimization#bibliography) Arguably, this sort of task is only adequately solvable this way—if it were possible to train a straightforward DQN agent to perform well at Chess, it plausibly would _have_ to learn to internally perform something like a tree search, producing a mesa-optimizer.[^7]
+
+[^7]: Assuming reasonable computational constraints..
 
 We hypothesize that the attractiveness of search in these domains is due to the diverse, branching nature of these environments. This is because search—that is, optimization—tends to be good at generalizing across diverse environments, as it gets to individually determine the best action for each individual task instance. There is a general distinction along these lines between optimization work done on the level of the learned algorithm and that done on the level of the base optimizer: the learned algorithm only has to determine the best action for a given task instance, whereas the base optimizer has to design heuristics that will hold regardless of what task instance the learned algorithm encounters. Furthermore, a mesa-optimizer can immediately optimize its actions in novel situations, whereas the base optimizer can only change the mesa-optimizer's policy by modifying it ex-post. Thus, for environments that are diverse enough that most task instances are likely to be completely novel, search allows the mesa-optimizer to adjust for that new task instance immediately.
 
@@ -39,12 +41,12 @@ Suppose an environment is composed of $N$ different instances, each of which req
 
 [^5]: Note, however, that there will be some maximum $x$ simply because the learned algorithm generally only has access to so much computational power.
 
-[^3]: Note that this makes the implicit assumption that the amount of optimization power required to find a mesa-optimizer capable of performing $x$ bits of optimization is independent of $N$. The justification for this is that optimization is a general algorithm that looks the same regardless of what environment it is applied to, so the amount of optimization required to find a $x$-bit optimizer should be independent of the environment.
+[^3]: Note that this makes the implicit assumption that the amount of optimization power required to find a mesa-optimizer capable of performing $x$ bits of optimization is independent of $N$. The justification for this is that optimization is a general algorithm that looks the same regardless of what environment it is applied to, so the amount of optimization required to find an $x$-bit optimizer should be relatively independent of the environment. That being said, it won't be completely independent, but as long as the primary difference between environments is how much optimization they need, rather than how hard it is to do optimization, the model presented here should hold.
 
 Thus, if we assume that, for a given $P$, the base optimizer will select the value of $x$ that maximizes the minimum level of performance, and thus the total optimization power applied to each instance, we get[^4]
 
 $$
-    x = \text{argmax}_x~ \frac{P - f(x)}{N} + x.
+    x^* = \text{argmax}_x~ \frac{P - f(x)}{N} + x.
 $$
 
 [^4]: Subject to the constraint that $P - f(x) \ge 0$.
@@ -99,6 +101,6 @@ Lastly, another form of bias that might have particularly interesting effects is
 
 &nbsp;
 
-_The third post in the [Mesa-Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB), titled “The Inner Alignment Problem,” can be found [here](TODO)._
+_The third post in the [Mesa-Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB), titled “The Inner Alignment Problem,” will be released in two days._
 
 [Glossary](https://intelligence.org/learned-optimization/#glossary) | [Bibliography](https://intelligence.org/learned-optimization/#bibliography)
