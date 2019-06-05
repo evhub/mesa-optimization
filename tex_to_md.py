@@ -50,7 +50,7 @@ section_grammar = (
 
 @tokens_as_dict(assert_keys=("name", "num"))
 def section_replace(tokens):
-    return "&nbsp;\n\n## " + tokens["name"] + "\n"
+    return ""
 
 patterns_list.append((section_grammar, section_replace))
 
@@ -169,7 +169,7 @@ cref_sec_grammar = (
 
 @tokens_as_dict(assert_keys=("num",))
 def cref_sec_replace(tokens):
-    return "post " + tokens["num"] + " (TODO)"
+    return "[post " + tokens["num"] + "](TODO)"
 
 patterns_list.append((cref_sec_grammar, cref_sec_replace))
 
@@ -338,7 +338,7 @@ comment_grammar = NL + Literal("%") + REST_OF_LINE("comment")
 
 @tokens_as_dict(assert_keys=("comment",))
 def comment_replace(tokens):
-    return "\nTODO:" + tokens["comment"]
+    return "\nTODO: " + tokens["comment"]
 
 patterns_list.append((comment_grammar, comment_replace))
 
@@ -371,4 +371,4 @@ def main(filename):
         fp.write(text)
 
 if __name__ == "__main__":
-    main("./post3.md")
+    main("./post4.md")
