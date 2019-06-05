@@ -103,6 +103,6 @@ Even in such a case, however, there would likely still be a period of time where
 
 &nbsp;
 
-_The fourth post in the [Mesa-Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB), titled “Deceptive Alignment,” will be released in two days._
+_The fourth post in the [Mesa-Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB), titled “Deceptive Alignment,” can be found [here](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB/p/zthDPAjh9w6Ytbeks)._
 
 [Glossary](https://intelligence.org/learned-optimization/#glossary) | [Bibliography](https://intelligence.org/learned-optimization/#bibliography)
