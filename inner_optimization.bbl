@@ -1,0 +1,256 @@
+\begin{thebibliography}{35}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[Filan(2018)]{bottle_caps}
+Daniel Filan.
+\newblock Bottle caps aren't optimisers, 2018.
+\newblock URL
+  \url{http://danielfilan.com/2018/08/31/bottle_caps_arent_optimisers.html}.
+
+\bibitem[Farquhar et~al.(2018)Farquhar, Rockt{\"a}schel, Igl, and
+  Whiteson]{treeqn}
+Gregory Farquhar, Tim Rockt{\"a}schel, Maximilian Igl, and Shimon Whiteson.
+\newblock {TreeQN} and {ATreeC}: Differentiable tree-structured models for deep
+  reinforcement learning.
+\newblock \emph{ICLR 2018}, 2018.
+\newblock URL \url{https://arxiv.org/abs/1710.11417}.
+
+\bibitem[Srinivas et~al.(2018)Srinivas, Jabri, Abbeel, Levine, and
+  Finn]{univ_plan_net}
+Aravind Srinivas, Allan Jabri, Pieter Abbeel, Sergey Levine, and Chelsea Finn.
+\newblock Universal planning networks.
+\newblock \emph{ICML 2018}, 2018.
+\newblock URL \url{https://arxiv.org/abs/1804.00645}.
+
+\bibitem[Andrychowicz et~al.(2016)Andrychowicz, Denil, Gomez, Hoffman, Pfau,
+  Schaul, Shillingford, and de~Freitas]{grad_by_grad}
+Marcin Andrychowicz, Misha Denil, Sergio Gomez, Matthew~W. Hoffman, David Pfau,
+  Tom Schaul, Brendan Shillingford, and Nando de~Freitas.
+\newblock Learning to learn by gradient descent by gradient descent.
+\newblock \emph{NIPS 2016}, 2016.
+\newblock URL \url{https://arxiv.org/abs/1606.04474}.
+
+\bibitem[Duan et~al.(2016)Duan, Schulman, Chen, Bartlett, Sutskever, and
+  Abbeel]{rl2}
+Yan Duan, John Schulman, Xi~Chen, Peter~L. Bartlett, Ilya Sutskever, and Pieter
+  Abbeel.
+\newblock {RL}$^2$: Fast reinforcement learning via slow reinforcement
+  learning.
+\newblock \emph{arXiv}, 2016.
+\newblock URL \url{https://arxiv.org/abs/1611.02779}.
+
+\bibitem[Yudkowsky()]{arbital_daemons}
+Eliezer Yudkowsky.
+\newblock Optimization daemons.
+\newblock URL \url{https://arbital.com/p/daemons}.
+
+\bibitem[Cheal()]{mesa}
+Joe Cheal.
+\newblock What is the opposite of meta?
+\newblock \emph{ANLP Acuity Vol. 2}.
+\newblock URL
+  \url{http://www.gwiznlp.com/wp-content/uploads/2014/08/Whats-the-opposite-of-meta.pdf}.
+
+\bibitem[Leike et~al.(2018)Leike, Krueger, Everitt, Martic, Maini, and
+  Legg]{leike}
+Jan Leike, David Krueger, Tom Everitt, Miljan Martic, Vishal Maini, and Shane
+  Legg.
+\newblock Scalable agent alignment via reward modeling: a research direction.
+\newblock \emph{arXiv}, 2018.
+\newblock URL \url{https://arxiv.org/abs/1811.07871}.
+
+\bibitem[Yudkowsky(2008)]{optpow}
+Eliezer Yudkowsky.
+\newblock Measuring optimization power, 2008.
+\newblock URL
+  \url{https://www.lesswrong.com/posts/Q4hLMDrFd8fbteeZ8/measuring-optimization-power}.
+
+\bibitem[Silver et~al.(2018)Silver, Hubert, Schrittwieser, Antonoglou, Lai,
+  Guez, Lanctot, Sifre, Kumaran, Graepel, Lillicrap, Simonyan, and
+  Hassabis]{alphazero}
+David Silver, Thomas Hubert, Julian Schrittwieser, Ioannis Antonoglou, Matthew
+  Lai, Arthur Guez, Marc Lanctot, Laurent Sifre, Dharshan Kumaran, Thore
+  Graepel, Timothy Lillicrap, Karen Simonyan, and Demis Hassabis.
+\newblock A general reinforcement learning algorithm that masters chess, shogi,
+  and go through self-play.
+\newblock \emph{Science}, 362\penalty0 (6419):\penalty0 1140--1144, 2018.
+\newblock URL \url{https://science.sciencemag.org/content/362/6419/1140.full}.
+
+\bibitem[Drexler(2019)]{drexler}
+K.~E. Drexler.
+\newblock Reframing superintelligence: Comprehensive ai services as general
+  intelligence.
+\newblock \emph{Technical Report \#2019-1, Future of Humanity Institute,
+  University of Oxford}, 2019.
+\newblock URL
+  \url{https://www.fhi.ox.ac.uk/wp-content/uploads/Reframing_Superintelligence_FHI-TR-2019-1.1-1.pdf}.
+
+\bibitem[Kumar and Garrabrant(2019)]{human_models}
+Ramana Kumar and Scott Garrabrant.
+\newblock Thoughts on human models.
+\newblock \emph{MIRI}, 2019.
+\newblock URL
+  \url{https://intelligence.org/2019/02/22/thoughts-on-human-models}.
+
+\bibitem[Christiano(2016)]{paul_solomonoff}
+Paul Christiano.
+\newblock What does the universal prior actually look like?, 2016.
+\newblock URL
+  \url{https://ordinaryideas.wordpress.com/2016/11/30/what-does-the-universal-prior-actually-look-like}.
+
+\bibitem[Graves et~al.(2014)Graves, Wayne, and Danihelka]{neural_tms}
+Alex Graves, Greg Wayne, and Ivo Danihelka.
+\newblock Neural turing machines.
+\newblock \emph{arXiv}, 2014.
+\newblock URL \url{https://arxiv.org/abs/1410.5401}.
+
+\bibitem[Valle-Pérez et~al.(2019)Valle-Pérez, Camargo, and
+  Louis]{nn_simp_bias}
+Guillermo Valle-Pérez, Chico~Q. Camargo, and Ard~A. Louis.
+\newblock Deep learning generalizes because the parameter-function map is
+  biased towards simple functions.
+\newblock \emph{ICLR 2019}, 2019.
+\newblock URL \url{https://arxiv.org/abs/1805.08522}.
+
+\bibitem[Christiano(2018)]{paul_minimal_circuits}
+Paul Christiano.
+\newblock Open question: are minimal circuits daemon-free?, 2018.
+\newblock URL
+  \url{https://www.lesswrong.com/posts/nyCHnY7T5PHPLjxmN/open-question-are-minimal-circuits-daemon-free}.
+
+\bibitem[van Merwijk(Forthcoming in 2019)]{chris}
+Chris van Merwijk.
+\newblock Development of {AI} agents as a principal-agent problem, Forthcoming
+  in 2019.
+
+\bibitem[Ibarz et~al.(2018)Ibarz, Leike, Pohlen, Irving, Legg, and
+  Amodei]{ibarz}
+Borja Ibarz, Jan Leike, Tobias Pohlen, Geoffrey Irving, Shane Legg, and Dario
+  Amodei.
+\newblock Reward learning from human preferences and demonstrations in {Atari}.
+\newblock \emph{NeurIPS 2018}, 2018.
+\newblock URL \url{https://arxiv.org/abs/1811.06521}.
+
+\bibitem[Su et~al.(2017)Su, Vargas, and Sakurai]{adversarial_examples}
+Jiawei Su, Danilo~Vasconcellos Vargas, and Kouichi Sakurai.
+\newblock One pixel attack for fooling deep neural networks.
+\newblock \emph{IEEE Transactions on Evolutionary Computation}, 2017.
+\newblock URL \url{http://arxiv.org/abs/1710.08864}.
+
+\bibitem[Amin and Singh(2016)]{irl_unidentifiability}
+Kareem Amin and Satinder Singh.
+\newblock Towards resolving unidentifiability in inverse reinforcement
+  learning.
+\newblock \emph{arXiv}, 2016.
+\newblock URL \url{https://arxiv.org/abs/1601.06569}.
+
+\bibitem[Pascanu et~al.(2017)Pascanu, Li, Vinyals, Heess, Buesing, Racanière,
+  Reichert, Weber, Wierstra, and Battaglia]{imagination_planners}
+Razvan Pascanu, Yujia Li, Oriol Vinyals, Nicolas Heess, Lars Buesing, Sebastien
+  Racanière, David Reichert, Théophane Weber, Daan Wierstra, and Peter
+  Battaglia.
+\newblock Learning model-based planning from scratch.
+\newblock \emph{arXiv}, 2017.
+\newblock URL \url{https://arxiv.org/abs/1707.06170}.
+
+\bibitem[Manheim and Garrabrant(2018)]{goodhart}
+David Manheim and Scott Garrabrant.
+\newblock Categorizing variants of {Goodhart's} law.
+\newblock \emph{arXiv}, 2018.
+\newblock URL \url{https://arxiv.org/abs/1803.04585}.
+
+\bibitem[Bostrom(2014)]{superintelligence}
+Nick Bostrom.
+\newblock \emph{Superintelligence: Paths, Dangers, Strategies}.
+\newblock Oxford University Press, 2014.
+\newblock URL
+  \url{https://global.oup.com/academic/product/superintelligence-9780199678112?cc=us&lang=en&}.
+
+\bibitem[Christiano(2019{\natexlab{a}})]{paul_doom}
+Paul Christiano.
+\newblock What failure looks like, 2019{\natexlab{a}}.
+\newblock URL
+  \url{https://www.alignmentforum.org/posts/HBxe6wdjxK239zajf/more-realistic-tales-of-doom}.
+
+\bibitem[Soares et~al.(2015)Soares, Fallenstein, Yudkowsky, and
+  Armstrong]{corrigibility}
+Nate Soares, Benja Fallenstein, Eliezer Yudkowsky, and Stuart Armstrong.
+\newblock Corrigibility.
+\newblock \emph{AAAI 2015}, 2015.
+\newblock URL \url{https://intelligence.org/files/Corrigibility.pdf}.
+
+\bibitem[Christiano(2019{\natexlab{b}})]{paul_robust_corrigibility}
+Paul Christiano.
+\newblock Worst-case guarantees, 2019{\natexlab{b}}.
+\newblock URL
+  \url{https://ai-alignment.com/training-robust-corrigibility-ce0e0a3b9b4d}.
+
+\bibitem[Aumann et~al.(1997)Aumann, Hart, and Perry]{absent_minded_driver}
+Robert~J. Aumann, Sergiu Hart, and Motty Perry.
+\newblock The absent-minded driver.
+\newblock \emph{Games and Economic Behavior}, 20:\penalty0 102--116, 1997.
+\newblock URL \url{http://www.ma.huji.ac.il/raumann/pdf/Minded%20Driver.pdf}.
+
+\bibitem[Wang et~al.(2016)Wang, Kurth-Nelson, Tirumala, Soyer, Leibo, Munos,
+  Blundell, Kumaran, and Botvinick]{learn_to_rl}
+Jane~X Wang, Zeb Kurth-Nelson, Dhruva Tirumala, Hubert Soyer, Joel~Z Leibo,
+  Remi Munos, Charles Blundell, Dharshan Kumaran, and Matt Botvinick.
+\newblock Learning to reinforcement learn.
+\newblock \emph{CogSci}, 2016.
+\newblock URL \url{https://arxiv.org/abs/1611.05763}.
+
+\bibitem[Amodei et~al.(2016)Amodei, Olah, Steinhardt, Christiano, Schulman, and
+  Mané]{concrete_problems}
+Dario Amodei, Chris Olah, Jacob Steinhardt, Paul Christiano, John Schulman, and
+  Dan Mané.
+\newblock Concrete problems in {AI} safety.
+\newblock \emph{arXiv}, 2016.
+\newblock URL \url{https://arxiv.org/abs/1606.06565}.
+
+\bibitem[Armstrong and Mindermann(2017)]{armstrong_preferences}
+Stuart Armstrong and Sören Mindermann.
+\newblock Occam's razor is insufficient to infer the preferences of irrational
+  agents.
+\newblock \emph{NeurIPS 2018}, 2017.
+\newblock URL \url{https://arxiv.org/abs/1712.05812}.
+
+\bibitem[Huang et~al.(2016)Huang, Kwiatkowska, Wang, and
+  Wu]{safety_verification}
+Xiaowei Huang, Marta Kwiatkowska, Sen Wang, and Min Wu.
+\newblock Safety verification of deep neural networks.
+\newblock \emph{CAV 2017}, 2016.
+\newblock URL \url{https://arxiv.org/abs/1610.06940}.
+
+\bibitem[Katz et~al.(2017)Katz, Barrett, Dill, Julian, and
+  Kochenderfer]{reluplex}
+Guy Katz, Clark Barrett, David Dill, Kyle Julian, and Mykel Kochenderfer.
+\newblock Reluplex: An efficient {SMT} solver for verifying deep neural
+  networks.
+\newblock \emph{CAV 2017}, 2017.
+\newblock URL \url{https://arxiv.org/abs/1702.01135}.
+
+\bibitem[Pei et~al.(2017)Pei, Cao, Yang, and Jana]{practical_verification}
+Kexin Pei, Yinzhi Cao, Junfeng Yang, and Suman Jana.
+\newblock Towards practical verification of machine learning: The case of
+  computer vision systems.
+\newblock \emph{arXiv}, 2017.
+\newblock URL \url{https://arxiv.org/abs/1712.01785}.
+
+\bibitem[Christiano et~al.(2018)Christiano, Shlegeris, and
+  Amodei]{amplification}
+Paul Christiano, Buck Shlegeris, and Dario Amodei.
+\newblock Supervising strong learners by amplifying weak experts.
+\newblock \emph{arXiv}, 2018.
+\newblock URL \url{https://arxiv.org/abs/1810.08575}.
+
+\bibitem[Irving et~al.(2018)Irving, Christiano, and Amodei]{debate}
+Geoffrey Irving, Paul Christiano, and Dario Amodei.
+\newblock {AI} safety via debate.
+\newblock \emph{arXiv}, 2018.
+\newblock URL \url{https://arxiv.org/abs/1805.00899}.
+
+\end{thebibliography}
