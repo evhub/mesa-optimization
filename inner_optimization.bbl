@@ -157,6 +157,13 @@ Razvan Pascanu, Yujia Li, Oriol Vinyals, Nicolas Heess, Lars Buesing, Sebastien
 \newblock \emph{arXiv}, 2017.
 \newblock URL \url{https://arxiv.org/abs/1707.06170}.
 
+\bibitem[Christiano et~al.(2018)Christiano, Shlegeris, and
+  Amodei]{amplification}
+Paul Christiano, Buck Shlegeris, and Dario Amodei.
+\newblock Supervising strong learners by amplifying weak experts.
+\newblock \emph{arXiv}, 2018.
+\newblock URL \url{https://arxiv.org/abs/1810.08575}.
+
 \bibitem[Manheim and Garrabrant(2018)]{goodhart}
 David Manheim and Scott Garrabrant.
 \newblock Categorizing variants of {Goodhart's} law.
@@ -239,13 +246,6 @@ Kexin Pei, Yinzhi Cao, Junfeng Yang, and Suman Jana.
   computer vision systems.
 \newblock \emph{arXiv}, 2017.
 \newblock URL \url{https://arxiv.org/abs/1712.01785}.
-
-\bibitem[Christiano et~al.(2018)Christiano, Shlegeris, and
-  Amodei]{amplification}
-Paul Christiano, Buck Shlegeris, and Dario Amodei.
-\newblock Supervising strong learners by amplifying weak experts.
-\newblock \emph{arXiv}, 2018.
-\newblock URL \url{https://arxiv.org/abs/1810.08575}.
 
 \bibitem[Irving et~al.(2018)Irving, Christiano, and Amodei]{debate}
 Geoffrey Irving, Paul Christiano, and Dario Amodei.

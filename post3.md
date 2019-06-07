@@ -1,4 +1,4 @@
-_This is the third of five posts in the [Mesa-Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB) based on the upcoming MIRI paper “Risks from Learned Optimization in Advanced Machine Learning Systems” by Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott Garrabrant. Each post in the sequence corresponds to a different section of the paper, with the full paper set to be published on the MIRI blog with the release of the last post in the sequence._
+_This is the third of five posts in the [Mesa-Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB) based on the MIRI paper “[Risks from Learned Optimization in Advanced Machine Learning Systems](https://arxiv.org/abs/1906.01820)” by Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott Garrabrant. Each post in the sequence corresponds to a different section of the paper._
 
 &nbsp;
 

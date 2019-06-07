@@ -7,6 +7,7 @@ from undebt.pyparsing import (
     Literal,
     SkipTo,
     OneOrMore,
+    Optional,
     originalTextFor,
     nestedExpr,
 )
@@ -44,13 +45,13 @@ patterns_list = []
 # section:
 section_grammar = (
     Literal("\\section") + BRACES("name") + NL
-    + Literal("\\label{sec:") + NUM("num") + Literal("}") + NL
+    + Optional(Literal("\\label{sec:") + NUM + Literal("}") + NL)
     + Literal("\\cftchapterprecistoc") + BRACES + NL
 )
 
-@tokens_as_dict(assert_keys=("name", "num"))
+@tokens_as_dict(assert_keys=("name",))
 def section_replace(tokens):
-    return ""
+    return "&nbsp;\n\n## " + tokens["name"] + "\n"
 
 patterns_list.append((section_grammar, section_replace))
 
@@ -371,4 +372,4 @@ def main(filename):
         fp.write(text)
 
 if __name__ == "__main__":
-    main("./post4.md")
+    main("./post5.md")
