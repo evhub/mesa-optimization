@@ -1,4 +1,4 @@
-_This is the second of five posts in the [Mesa-Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB) based on the MIRI paper “[Risks from Learned Optimization in Advanced Machine Learning Systems](https://arxiv.org/abs/1906.01820)” by Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott Garrabrant. Each post in the sequence corresponds to a different section of the paper._
+_This is the second of five posts in the [Risks from Learned Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB) based on the MIRI paper “[Risks from Learned Optimization in Advanced Machine Learning Systems](https://arxiv.org/abs/1906.01820)” by Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott Garrabrant. Each post in the sequence corresponds to a different section of the paper._
 
 &nbsp;
 
@@ -101,6 +101,6 @@ Lastly, another form of bias that might have particularly interesting effects is
 
 &nbsp;
 
-_The third post in the [Mesa-Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB), titled “The Inner Alignment Problem,” can be found [here](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB/p/pL56xPoniLvtMDQ4J)._
+_The third post in the [Risks from Learned Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB), titled “The Inner Alignment Problem,” can be found [here](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB/p/pL56xPoniLvtMDQ4J)._
 
 [Glossary](https://intelligence.org/learned-optimization/#glossary) | [Bibliography](https://intelligence.org/learned-optimization/#bibliography)

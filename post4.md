@@ -1,4 +1,4 @@
-_This is the fourth of five posts in the [Mesa-Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB) based on the MIRI paper “[Risks from Learned Optimization in Advanced Machine Learning Systems](https://arxiv.org/abs/1906.01820)” by Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott Garrabrant. Each post in the sequence corresponds to a different section of the paper._
+_This is the fourth of five posts in the [Risks from Learned Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB) based on the MIRI paper “[Risks from Learned Optimization in Advanced Machine Learning Systems](https://arxiv.org/abs/1906.01820)” by Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott Garrabrant. Each post in the sequence corresponds to a different section of the paper._
 
 &nbsp;
 
@@ -155,6 +155,6 @@ Furthermore, it should be noted that it is not strictly necessary that a mesa-op
 
 &nbsp;
 
-_The fifth and final post in the [Mesa-Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB), titled “Risks from Learned Optimization: Conclusion and Related Work,” can be found [here](https://www.alignmentforum.org/posts/4XPa3xa44jAWiCkmy/risks-from-learned-optimization-conclusion-and-related-work)._
+_The fifth and final post in the [Risks from Learned Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB), titled “Risks from Learned Optimization: Conclusion and Related Work,” can be found [here](https://www.alignmentforum.org/posts/4XPa3xa44jAWiCkmy/risks-from-learned-optimization-conclusion-and-related-work)._
 
 [Glossary](https://intelligence.org/learned-optimization/#glossary) | [Bibliography](https://intelligence.org/learned-optimization/#bibliography)
