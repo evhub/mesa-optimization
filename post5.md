@@ -1,4 +1,4 @@
-_This is the fifth of five posts in the [Risks from Learned Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB) based on the MIRI paper “[Risks from Learned Optimization in Advanced Machine Learning Systems](https://arxiv.org/abs/1906.01820)” by Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott Garrabrant. Each post in the sequence corresponds to a different section of the paper._
+_This is the fifth of five posts in the [Risks from Learned Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB) based on the paper “[Risks from Learned Optimization in Advanced Machine Learning Systems](https://arxiv.org/abs/1906.01820)” by Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott Garrabrant. Each post in the sequence corresponds to a different section of the paper._
 
 &nbsp;
 
@@ -41,7 +41,5 @@ In this sequence, we have argued for the existence of two basic AI safety proble
 Our uncertainty on this matter is a potentially significant hurdle to determining the best approaches to AI safety. If we do not know the relative difficulties of the inner alignment problem and the unintended optimization problem, then it is unclear how to adequately assess approaches that rely on solving one or both of these problems (such as Iterated Distillation and Amplification[(34)](https://intelligence.org/learned-optimization#bibliography) or AI safety via debate[(35)](https://intelligence.org/learned-optimization#bibliography)). We therefore suggest that it is both an important and timely task for future AI safety work to pin down the conditions under which the inner alignment problem and the unintended optimization problem are likely to occur as well as the techniques needed to solve them.
 
 &nbsp;
-
-_The full paper that this sequence is based on, "Risks from Learned Optimization in Advanced Machine Learning Systems," is now [available on arXiv](https://arxiv.org/abs/1906.01820)._
 
 [Glossary](https://intelligence.org/learned-optimization/#glossary) | [Bibliography](https://intelligence.org/learned-optimization/#bibliography)
