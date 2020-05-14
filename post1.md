@@ -1,6 +1,6 @@
 _This is the first of five posts in the [Risks from Learned Optimization Sequence](https://www.alignmentforum.org/s/r9tYkB2a8Fp4DN8yB) based on the paper “[Risks from Learned Optimization in Advanced Machine Learning Systems](https://arxiv.org/abs/1906.01820)” by Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, Joar Skalse, and Scott Garrabrant. Each post in the sequence corresponds to a different section of the paper._
 
-_With special thanks to Paul Christiano, Eric Drexler, Rob Bensinger, Jan Leike, Rohin Shah, William Saunders, Buck Shlegeris, David Dalrymple, Abram Demski, Stuart Armstrong, Linda Linsefors, Carl Shulman, Toby Ord, and everyone else who provided feedback on earlier versions of this sequence._
+_Evan Hubinger, Chris van Merwijk, Vladimir Mikulik, and Joar Skalse contributed equally to this sequence. With special thanks to Paul Christiano, Eric Drexler, Rob Bensinger, Jan Leike, Rohin Shah, William Saunders, Buck Shlegeris, David Dalrymple, Abram Demski, Stuart Armstrong, Linda Linsefors, Carl Shulman, Toby Ord, Kate Woolverton, and everyone else who provided feedback on earlier versions of this sequence._
 
 &nbsp;
 
